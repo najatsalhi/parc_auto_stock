@@ -1,4 +1,5 @@
 import React, {useEffect,useState} from 'react'
+import Login from './login'
 function App() {
 
   const [ backendData, setBackendData] = useState([{}])
@@ -15,7 +16,7 @@ function App() {
     <div>
       {(typeof backendData.users === 'undefined') ? (
         <p>
-          Loading...
+          <Login/>
         </p>
       ): (
         backendData.users.map((user,i) => (
