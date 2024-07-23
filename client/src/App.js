@@ -1,30 +1,19 @@
-import React, {useEffect,useState} from 'react'
-import Login from './login'
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './Home';
+import Login from './login';
 
-  const [ backendData, setBackendData] = useState([{}])
-  useEffect(() => {
-    fetch("/api").then(
-      Response => Response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-    }
-  )
-  }, [])
+function App() {
   return (
-    <div>
-      {(typeof backendData.users === 'undefined') ? (
-        <p>
-          <Login/>
-        </p>
-      ): (
-        backendData.users.map((user,i) => (
-          <p key={i}>{user}</p>
-        ))
-      )
-      } 
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
-export default App;
+
+export default App;
