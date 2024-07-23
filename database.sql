@@ -105,7 +105,7 @@ create table chauffeur
     permie varchar(30),
     date_debut date,
     date_fin date
-);
+); 
 create table recharge_carb
 (
     id_recharge_carb int PRIMARY KEY ,
