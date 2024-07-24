@@ -1,18 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Router, Route} from 'react-router-dom';
+import  { BrowserRouter, Routes, Route }from 'react-router-dom';
 import AddUser from './addUser';
 import Login from './login';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <BrowserRouter>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/addUser" component={AddUser} />
-        </BrowserRouter>
-      </div>
-    </Router>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" component={Login} />
+          <Route path="/addUser" component={AddUser} />
+        </Routes>
+    </BrowserRouter>
   );
 }
 

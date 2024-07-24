@@ -27,7 +27,8 @@ function Login () {
                     </div>
                     <div className='mb-3'>
                         <label htmlFor="password">Mot de passe</label><br></br>
-                        <input type="password" placeholder='Mot de passe' name="password" id="password" />
+                        <input type="password" placeholder='Mot de passe' name="password" id="password"
+                        onChange={handleInput}/>
                         {errors.password && <span className='text-danger'>{errors.password}</span>}
                     </div>
                     <p style={{fontSize: '12px'}}>Mot de passe oublié ?</p>
