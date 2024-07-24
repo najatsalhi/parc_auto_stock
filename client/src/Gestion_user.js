@@ -12,7 +12,7 @@ function Gestion () {
                 </tr>
             </table>
             </div>
-            <Link to='/addUser' className='btn_btn_success'>modifier</Link>
+            <Link to='/' className='btn_btn_success'>modifier</Link>
         </div>
         
     )

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import validation from './loginvalidation';
-import Axios from 'axios';
+import validation from './add_user_validation';
+import  Axios from 'axios';
 
 function AddUser () {
     const [values,setValues]= useState
     ({
+        user: '',
         email: '',
-        password:''
+        password: '',
+        confirmPassword: '',
+        role: ''
     })
     const navigate = useNavigate();
 
@@ -23,8 +26,8 @@ function AddUser () {
     const err = validation (values);
     setErrors(err)
     if (err.name ==="" && err.email ==="" && err.password ===""&& err.role ===""){
-        Axios.post('http://localhost:3306/addUser',values)
-        .then(res =>{  
+        Axios.post('http://localhost:3000/addUser',values)
+        .then(() => {  
             navigate('/');
         })
         .catch(err => console.log(err))

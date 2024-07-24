@@ -19,10 +19,13 @@ function validation(values){
     else {
         error.password = ""
     }
-    return error;
-    }
+    
     if(!values.confirmer){
         error.confirmer = "User name is required"
     }
-    
+    if(!(values.confirmer == values.password)){
+        error.confirmer = "Password didn't match"
+    }
+    return error;
+}
     export default validation;
