@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import validation from './loginvalidation';
-import axios from axios;
+import Axios from 'axios';
+
 function AddUser () {
     const [values,setValues]= useState
     ({
@@ -17,16 +18,17 @@ function AddUser () {
     const handleSubmit = (vald) => {
         vald.preventDefault();
         setErrors(validation(values));
-        }
     }
+    
     const err = validation (values);
     setErrors(err)
     if (err.name ==="" && err.email ==="" && err.password ===""&& err.role ===""){
-        axios.post('http://localhost:3306/addUser',values)
+        Axios.post('http://localhost:3306/addUser',values)
         .then(res =>{  
             navigate('/');
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err))
+    }
     return (
     <div className='d-flex justify-content-center'>
             <div className='bg-white ' style={{ borderRadius: '20px', boxShadow: '0px 16px 40px 0px rgba(154, 170, 207, 0.2)', backgroundColor: '#fff', alignSelf: 'center', display: 'flex', marginTop: '86px', width: '590px', maxWidth: '100%', flexDirection: 'column', alignItems: 'center', color: '#4b4b4b', fontWeight: 400, padding: '80px' }}>
@@ -71,7 +73,7 @@ function AddUser () {
                 </form>
             </div>
     </div>
-    );
-};
+    )
+}
 
 export default AddUser;
