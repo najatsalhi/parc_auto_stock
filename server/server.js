@@ -27,5 +27,5 @@ app.post('/parc_auto_stock',(req,res) => {
         return res.json("data")
 })}
 )
-app.listen(3306,()=>{console.log("server data") })
+app.listen(3000,()=>{console.log("server data") })
 
