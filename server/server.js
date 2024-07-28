@@ -15,22 +15,20 @@ const db = mysql.createConnection({
 
 app.post("/addUser", (req, res) => {
   const sql =
-    "INSERT INTO users (`nom`,`email` , `password`,`role`) VALUES (?)";
+    "INSERT INTO users ('1',`nom`,`email` , `password`,`role`) VALUES (?)";
   const values = [
+    req.body.id,
     req.body.nom,
     req.body.email,
-    req.body.password,
-    req.body.role,
-  ];
-  db.query(sql, [values], (err, data) => {
-    if (err) return res.json("Error");
+    req.body.password
+  ]
+  db.query(sql, {values}, (errors, data) => {
+    if (errors) return res.json(errors);
     return res.json(data);
   });
 });
 
-//app.get("/",(req,res) => {
-//  const sql =""
-//})
+
 
 app.listen(8081, () => {
   console.log("server data");

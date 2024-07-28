@@ -14,26 +14,18 @@ function AddUser() {
 
   const navigate = useNavigate();
   const [errors, setErrors] = useState("");
-  function handleInput(event) {
-    setValues((prev) => ({ ...prev, [event.target.name]: [event.target.value] }));
+  function handleChange(event) {
+    setValues({ ...values, [event.target.name]: [event.target.value] });
   }
-  function handleSubmit(event) {
-    event.preventDefault();
-    setErrors(validation(values));
-    if (
-      errors.nom === "" &&
-      errors.prenom === "" &&
-      errors.email === "" &&
-      errors.password === "" &&
-      errors.role === ""
-    ) {
-      Axios.post("http://localhost:8081/addUser", values)
-        .then((res) => {
-          console.log(res);
+  const handleSubmit =(event) =>{
+        event.preventDefault();
+        Axios.post("http://localhost:8081/addUser", {values})
+        .then(res => {
+          console.log("res");
           navigate('/');
-        }).catch((errors) => console.log(errors));
+        }).catch((errors) => console.log(errors))
     }
-  }
+  
 
   return (
     <div className="d-flex justify-content-center">
@@ -56,30 +48,30 @@ function AddUser() {
         }}
       >
         <h1 style={{ color: "black", textAlign: "center" }}>Ajouter</h1>
-        <form action="" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="name">Nom</label>
+            <label htmlFor="nom">Nom</label>
             <br></br>
             <input
               type="text"
-              placeholder="nom"
+              placeholder="Nom"
               name="nom"
               id="nom"
-              onChange={handleInput}
+              onChange={handleChange}
             />
             {errors.nom && <span class="text-danger">{errors.nom}</span>}
           </div>
           <div className="mb-3">
-            <label htmlFor="prenom">Nom</label>
+            <label htmlFor="prenom">Prénom</label>
             <br></br>
             <input
               type="text"
-              placeholder="Prenom"
+              placeholder="Prénom"
               name="prenom"
               id="prenom"
-              onChange={handleInput}
+              onChange={handleChange}
             />
-            {errors.prenom && <span class="text-danger">{errors.prenom}</span>}
+            {errors.prenom && <span className="text-danger">{errors.prenom}</span>}
           </div>
           <div className="mb-3">
             <label htmlFor="email">Email</label>
@@ -89,11 +81,11 @@ function AddUser() {
               placeholder="Email"
               name="email"
               id="email"
-              onChange={handleInput}
+              onChange={handleChange}
             />
-            {errors.email && (
+            {errors.email && 
               <span className="text-danger">{errors.email}</span>
-            )}
+            }
           </div>
           <div className="mb-3">
             <label htmlFor="password">Mot de passe</label>
@@ -103,11 +95,11 @@ function AddUser() {
               placeholder="Mot de passe"
               name="password"
               id="password"
-              onChange={handleInput}
+              onChange={handleChange}
             />
-            {errors.password && (
+            {errors.password && 
               <span className="text-danger">{errors.password}</span>
-            )}
+            }
           </div>
           <div className="mb-3">
             <label htmlFor="Confirmer">Confirmer</label>
@@ -117,32 +109,19 @@ function AddUser() {
               placeholder="Confirmer"
               name="Confirmer"
               id="Confirmer"
-              onChange={handleInput}
+              onChange={handleChange}
             />
-            {errors.Confirmer && (
+            {errors.Confirmer && 
               <span className="text-danger">{errors.Confirmer}</span>
-            )}
+            }
           </div>
-          <div className="mb-3">
-            <label htmlFor="list-select">Role</label>
-            <br></br>
-            <select
-              placeholder="Role"
-              name="role"
-              id="list-select"
-              onChange={handleInput}
-            >
-              <option value="admin">Admin </option>
-              <option value="user">User</option>
-            </select>
-            {errors.role && <span className="text-danger">{errors.role}</span>}
-          </div>
+          
           <p style={{ fontSize: "12px" }}>Mot de passe oublié ?</p>
-          <button type="submit" className="btn_btn_success">
+          <button type="submit" className="btn btn-success w-100 rounded-0">
             Ajouter
           </button>{" "}
           <br></br>
-          <Link to="/" className="btn_btn_default">
+          <Link to="/" className="btn btn-default">
             Annuler
           </Link>
         </form>
