@@ -26,7 +26,7 @@ function validation(values){
     if(!values.confirmer){
         error.confirmer = "User name is required"
     }
-    if(!(values.confirmer == values.password)){
+    if(!(values.confirmer === values.password)){
         error.confirmer = "Password didn't match"
     }
     return error;
