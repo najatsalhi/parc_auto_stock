@@ -15,19 +15,19 @@ const db = mysql.createConnection({
 
 app.post("/addUser", (req, res) => {
   const sql =
-    "INSERT INTO users ('1',`nom`,`email` , `password`,`role`) VALUES (?)";
+    "INSERT INTO users ('nom','prenom','email' , 'password') VALUES (?)";
   const values = [
-    req.body.id,
     req.body.nom,
+    req.body.prenom,
     req.body.email,
-    req.body.password
+    req.body.password,
+
   ]
   db.query(sql, {values}, (errors, data) => {
     if (errors) return res.json(errors);
     return res.json(data);
   });
 });
-
 
 
 app.listen(8081, () => {
