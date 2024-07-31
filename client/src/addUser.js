@@ -1,32 +1,45 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import validation from "./add_user_validation";
-import Axios from "axios";
 
 function AddUser() {
   const [values, setValues] = useState({
     nom: "",
-    prenom:"",
+    prenom: "",
     email: "",
     password: "",
-    role: ""
   });
-
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  const [errors, setErrors] = useState("");
-  function handleChange(event) {
-    setValues({ ...values, [event.target.name]: [event.target.value] });
-  }
-  const handleSubmit =(event) =>{
-        event.preventDefault();
-        Axios.post("http://localhost:8081/addUser", {values})
-        .then(res => {
-          console.log("res");
-          navigate('/');
-        }).catch((errors) => console.log(errors))
-    }
-  
 
+  const handleChange = (event) => {
+    setValues((prev) => ({
+      ...prev,
+      [event.target.name]: [event.target.value],
+    }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const err = validation(values);
+    setErrors(err);
+    if (
+      errors.nom === "" &&
+      errors.prenom === "" &&
+      errors.password === "" &&
+      errors.email === ""
+    ){
+      console.log("success");
+      axios.post("http://localhost:3001/addUser", values)
+        .then(res => {
+          console.log(res);
+          navigate("/");
+        })
+        .catch(err => console.log(err));
+      console.log("success");
+    }
+    
+  };
   return (
     <div className="d-flex justify-content-center">
       <div
@@ -59,7 +72,6 @@ function AddUser() {
               id="nom"
               onChange={handleChange}
             />
-            {errors.nom && <span class="text-danger">{errors.nom}</span>}
           </div>
           <div className="mb-3">
             <label htmlFor="prenom">Prénom</label>
@@ -71,7 +83,6 @@ function AddUser() {
               id="prenom"
               onChange={handleChange}
             />
-            {errors.prenom && <span className="text-danger">{errors.prenom}</span>}
           </div>
           <div className="mb-3">
             <label htmlFor="email">Email</label>
@@ -83,9 +94,6 @@ function AddUser() {
               id="email"
               onChange={handleChange}
             />
-            {errors.email && 
-              <span className="text-danger">{errors.email}</span>
-            }
           </div>
           <div className="mb-3">
             <label htmlFor="password">Mot de passe</label>
@@ -97,9 +105,6 @@ function AddUser() {
               id="password"
               onChange={handleChange}
             />
-            {errors.password && 
-              <span className="text-danger">{errors.password}</span>
-            }
           </div>
           <div className="mb-3">
             <label htmlFor="Confirmer">Confirmer</label>
@@ -109,13 +114,8 @@ function AddUser() {
               placeholder="Confirmer"
               name="Confirmer"
               id="Confirmer"
-              onChange={handleChange}
             />
-            {errors.Confirmer && 
-              <span className="text-danger">{errors.Confirmer}</span>
-            }
           </div>
-          
           <p style={{ fontSize: "12px" }}>Mot de passe oublié ?</p>
           <button type="submit" className="btn btn-success w-100 rounded-0">
             Ajouter

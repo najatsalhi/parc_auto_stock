@@ -1,19 +1,36 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import validation from './loginvalidation';
+import axios from "axios";
+
 function Login () {
     const [values,setValues]= useState
     ({
         email: '',
         password:''
     })
-    const [errors,setErrors]= useState({})
-    const handleInput = (vald) => {
-        setValues(prev =>({...prev,[vald.target.name]:[vald.target.value]}))
+    const navigate = useNavigate();
+    const [errors,setErrors]= useState({});
+    const handleInput = (event) => {
+        setValues(prev =>({...prev,[event.target.name]:[event.target.value]}))
     }
-    const handleSubmit = (vald) => {
-        vald.preventDefault();
+    const handleSubmit = (event) => {
+        event.preventDefault();
         setErrors(validation(values));
+        if (
+            errors.password === "" &&
+            errors.email === ""
+          ) {
+            axios.post("http://localhost:3001/login", values)
+              .then(res => {
+                if (res.data === "success"){
+                   navigate("/"); 
+                }else{alert("no record")}
+                console.log("success");
+                
+              })
+              .catch(err => console.log(err));
+          }
     }
     return (
     <div className='d-flex justify-content-center'>
