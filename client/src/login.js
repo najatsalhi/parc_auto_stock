@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import validation from "./loginvalidation";
 import axios from "axios";
 import "./login.css";
+import rm from "./rm.png";
+import Atsign from "./Atsign.jpg";
 
 function Login() {
   const [values, setValues] = useState({
@@ -38,7 +40,7 @@ function Login() {
     <div className="back">
       <div className="header">
         <div className="logo">
-          <img srcSet="src/logo.png"/>
+          <img className="img1" srcSet={rm}/>
           <div className="div-4">ParcAuto</div>
         </div>
         <div className="di">
@@ -51,7 +53,9 @@ function Login() {
       <div className="box ">
         <form action="" onSubmit={handleSubmit}>
           <div className="mb-3">
+            <h3>Welcome!</h3>
             <label htmlFor="email">Email</label>
+            <img src={Atsign}/>
             <br></br>
             <input
               type="email"
@@ -78,8 +82,8 @@ function Login() {
               <span className="text-danger">{errors.password}</span>
             )}
           </div>
-          <p style={{ fontSize: "12px" }}>Mot de passe oublié ?</p>
-          <button type="submit" className="btn btn-success">
+          <p>Mot de passe oublié ?</p>
+          <button type="submit" id="butn" className="btn btn-success">
             Se connecter
           </button>
           <Link to="/addUser" className="btn btn-success">

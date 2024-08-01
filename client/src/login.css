@@ -1,92 +1,146 @@
-
-.back{
-    background-color: rgba(255, 255, 255, 1);
-    display: flex;
-    padding-bottom: 78px;
-    flex-direction: column;
+.back {
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  padding-bottom: 78px;
+  flex-direction: column;
 }
-.header{
-    border-radius: 0px 0px 16px 16px;
-    background-color: rgba(105, 169, 209, 1);
-    display: flex;
-    width: 100%;
-    gap: 20px;
-    color: rgba(255, 255, 255, 1);
-    justify-content: space-between;
-    padding: 6px 40px 17px 16px;
+.header {
+  border-radius: 0px 0px 16px 16px;
+  background-color: rgba(105, 169, 209, 1);
+  display: flex;
+  width: 100%;
+  gap: 30px;
+  color: rgba(255, 255, 255, 1);
+  justify-content: space-between;
+  padding: 6px 40px 17px 16px;
+  max-width: 100%;
+  flex-wrap: wrap;
+  padding-right: 40px;
+}
+@media (max-width: 991px) {
+  .header {
     max-width: 100%;
     flex-wrap: wrap;
     padding-right: 20px;
+  }
+}
+.logo {
+  display: flex;
+  gap: 15px;
+  font-size: 36px;
+  font-weight: 800;
+  white-space: nowrap;
+  text-align: center;
+  letter-spacing: 0.72px;
+}
+@media (max-width: 91px) {
+  .logo {
+    white-space: initial;
+  }
+}
+.div-4 {
+  font-family: Poppins, sans-serif;
+  flex-grow: 1;
+  flex-basis: auto;
+  margin: auto 0;
+  text-align: left;
+}
+.div {
+  display: inline-flex;
+  align-items: start;
+  align-self: flex-end;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  justify-content: space-between;
+  margin: auto 0;
+  padding-left: 70%;
+  font-family: Poppins, sans-serif;
+}
+.img1 {
+  object-fit:auto;
+  object-position: center;
+  width: 10%;
+}
+from {
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 16px 40px rgba(154, 170, 207, 0.2);
+  align-self: center;
+  display: flex;
+  margin-top: 29px;
+  width: 400px;
+  height: 450px;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(75, 75, 75, 1);
+  font-weight: 400;
+  padding: 80px;
+}
+.di {
+  display: flex;
+  align-items: start;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  justify-content: space-between;
+  margin: auto 0;
+}
+label{
+  font-family: Lato, sans-serif;
+}
+h3{
+  align-self: end;
+  margin-top: 120px;
+  font: 36px Lato, -apple-system, Roboto, Helvetica, sans-serif ;
+}
+p{
+  color: rgba(56, 145, 201, 1);
+        align-self: end;
+        margin-top: 17px;
+        font: 14px Inter, sans-serif;
 }
 @media (max-width: 991px) {
-    .header {
-      max-width: 100%;
-      flex-wrap: wrap;
-      padding-right: 20px;
-    }
+  p {
+    margin-right: 10px;
   }
-.logo{
-    display: flex;
-        gap: 70px;
-        font-size: 36px;
-        font-weight: 800;
-        white-space: nowrap;
-        text-align: center;
-        letter-spacing: 0.72px;
+}
+#butn{
+  border-radius: 16px;
+  background-color: rgba(56, 145, 201, 1);
+  width: 39px;
+  height: 25px;
+  max-width: 100%;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  margin: 26px 0;
+  padding: 19px 60px;
+  font: 12px Poppins, sans-serif;
 }
 @media (max-width: 991px) {
-    .logo{
-      white-space: initial;
-    }
-}
-.div-4{
-    font-family: Poppins, sans-serif;
-    flex-grow: 1;
-    flex-basis: auto;
-    margin: auto 0;
-}
-.div{
-    display: inline-flex;
-        align-items: start;
-        align-self: flex-end;
-        gap: 20px;
-        font-size: 18px;
-        font-weight: 400;
-        justify-content: space-between;
-        margin: auto 0;
-        padding-left: 70%; ;
-        font-family: Poppins, sans-serif;
+  #butn{
+    padding: 0 20px;
   }
-
-.img{
-
-    object-fit:none;
-    object-position: left;
-    width: 71px;
-    display: flex;
 }
-.box {
+.box{
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 0px 16px 40px rgba(154, 170, 207, 0.2);
     align-self: center;
     display: flex;
-    margin-top: 29px;
+    margin-top: 86px;
     width: 400px;
-    height: 450px;
     max-width: 100%;
     flex-direction: column;
     align-items: center;
     color: rgba(75, 75, 75, 1);
     font-weight: 400;
     padding: 80px;
+}
+@media (max-width: 991px) {
+  .box {
+    margin-top: 40px;
+    padding: 0 20px;
   }
-  .di{
-    display: flex;
-    align-items: start;
-    gap: 20px;
-    font-size: 18px;
-    font-weight: 400;
-    justify-content: space-between;
-    margin: auto 0;
-  }
+}
