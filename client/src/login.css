@@ -65,8 +65,8 @@ h3 {
   align-self: end;
   text-align: center;
   margin-top: 86px;
-  margin-bottom: 120px;
-  font: 36px 'Lato', -apple-system, Roboto, Helvetica, sans-serif;
+  margin-bottom: 150px;
+  font: 36px 'Lato',Helvetica, sans-serif;
 }
 p {
   color: rgba(56, 145, 201, 1);
@@ -119,47 +119,72 @@ form{
     padding: 0 80px;
   }
 }
-label {
+name-label {
   font-family: 16px 'Lato', sans-serif;
   display:inline;
   padding-right: 150px;
   padding-left: 2px;
   transition: all 0.3s ease;
   padding-bottom: 15px;
+  padding-top: 60px;
+  flex-grow: 1;
+  flex-basis: auto;
 }
+
 .em{
   margin-left:53px;
 }
-img{
+.ps,.em{
   aspect-ratio: 1;
   object-fit: auto;
   object-position: center;
   width: 23px;
   align-self: end;
+  margin-left:253px;
 }
 .log{
   transform: translateY(-50%);
-  margin-top: 46px;
+  margin-top: 50px;
 }
 .wrapper{
-  padding-top: 20px;
+  position: relative;
+  margin-bottom: 20px;
+
 }
 input{
   outline: none;
   border: none;
   border-bottom: 2px solid silver;
   width: 280px;
-  position: fixed;
-  margin-top: 46px;
+  position: absolute;
+  margin-top: 180px;
 }
-.input-data label {
+.input-data name-label {
   font-size: 18px;
   pointer-events: none;
   transition: font-size 0.5s;
 }
-.input-data:hover label {
+.input-data:hover name-label {
   font-size: 14px;
   transform: translateY(-1rem);
+}
+.name-label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: gray;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Floating effect when input is focused or has value */
+.name-input:focus ~ .log .name-label,
+.name-input:not(:placeholder-shown) ~ .log .name-label {
+  top: -1rem;
+  font-size: 16px;
+  color: rgba(56, 145, 201, 1);
 }
 
 

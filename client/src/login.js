@@ -51,15 +51,15 @@ function Login() {
                   name="email"
                   id="email"
                   className="name-input"
+                  placeholder=""
                   onChange={handleInput}
                 />
                 <div className="log">
-                  <label className="name-label" htmlFor="email">
+                  <div className="name-label" htmlFor="email">
                     Email
-                  </label>
+                  </div>
                   <img className="em" src={Atsign} />
                 </div>
-                <div class="underline"></div>
               </div>
             </div>
             {errors.email && (
@@ -74,15 +74,16 @@ function Login() {
                   name="password"
                   id="password"
                   className="name-input"
+                  placeholder=""
                   onChange={handleInput}
                 />
+                
                 <div className="log">
-                  <label className="name-label" htmlFor="password">
+                  <div className="name-label" htmlFor="password">
                     Mot de passe
-                  </label>
-                  <img src={Lock} />
+                  </div>
+                  <img className="ps" src={Lock} />
                 </div>
-                <div class="underline"></div>
               </div>
             </div>
             {errors.password && (
@@ -90,13 +91,13 @@ function Login() {
             )}
           </div>
           <p>Mot de passe oublié ?</p>
-          <Link to="/dash"
+          <button
             type="submit"
             id="butn"
             className="btn btn-success"
           >
             Se connecter
-          </Link>
+          </button>
         </form>
       </div>
     </div>

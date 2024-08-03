@@ -4,6 +4,8 @@ import AddUser from './addUser';
 import Login from './login';
 import Gestion from './Gestion_user';
 import Dash from './dashboard';
+import Stock from './Stock';
+import ParcAuto from './ParcAuto';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
           <Route path="/addUser" element={<AddUser/>} />
           <Route path="/gestion" element={<Gestion/>} />
           <Route path="/dash" element={<Dash/>} />
+          <Route path="/stock" element={<Stock/>} />
+          <Route path="/parcauto" element={<ParcAuto/>} />
         </Routes>
     </BrowserRouter>
   );
