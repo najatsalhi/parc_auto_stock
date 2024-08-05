@@ -8,35 +8,37 @@ import Lock from "./Lock.svg";           // icon lock
 import Headers from "./header.js";           // headers
 
 function Login() {
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-  });
-  const navigate = useNavigate();
-  const [errors, setErrors] = useState({});
-  const handleInput = (event) => {
-    setValues((prev) => ({
-      ...prev,
-      [event.target.name]: [event.target.value],
-    }));
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setErrors(validation(values));
-    if (errors.password === "" && errors.email === "") {
-      axios
-        .post("http://localhost:3001/login", values)
-        .then((res) => {
-          if (res.data === "success") {
-            navigate("/");
-          } else {
-            alert("no record");
-          }
-          console.log("success");
-        })
-        .catch((err) => console.log(err));
+    const [values,setValues]= useState
+    ({
+        email: '',
+        password:''
+    })
+    const navigate = useNavigate();
+    const [errors,setErrors]= useState({});
+    const handleInput = (event) => {
+        setValues(prev =>({...prev,[event.target.name]:[event.target.value]}))
     }
-  };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setErrors(validation(values));
+        
+        if (
+            errors.password === "" &&
+            errors.email === ""
+          ) {
+            axios.post("http://localhost:3001/login", values)
+              .then(res => {
+                if (res.data === "success"){
+                    console.log("das")
+                   navigate("/dash");
+                }else{
+                    alert("no record")
+                }
+              })
+              .catch(err => console.log(err));
+          }
+    }                
+  
   return (
     <div className="back">           
       <Headers />          
@@ -44,8 +46,8 @@ function Login() {
         <form action="" onSubmit={handleSubmit}>
           <h3>Welcome!</h3>
           <div className="mb-3">
-            <div class="wrapper">
-              <div class="input-data">
+            <div className="wrapper">
+              <div className="input-data">
                 <input
                   type="email"
                   name="email"
@@ -67,8 +69,8 @@ function Login() {
             )}
           </div>
           <div className="mb-3">
-            <div class="wrapper">
-              <div class="input-data">
+            <div className="wrapper">
+              <div className="input-data">
                 <input
                   type="password"
                   name="password"

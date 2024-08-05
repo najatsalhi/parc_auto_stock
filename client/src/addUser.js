@@ -23,17 +23,18 @@ function AddUser() {
     event.preventDefault();
     const err = validation(values);
     setErrors(err);
+    
     if (
       errors.nom === "" &&
       errors.prenom === "" &&
       errors.password === "" &&
       errors.email === ""
     ){
-      console.log("success");
       axios.post("http://localhost:3001/addUser", values)
         .then(res => {
-          console.log(res);
+          
           navigate("/");
+          console.log(res);
         })
         .catch(err => console.log(err));
       console.log("success");

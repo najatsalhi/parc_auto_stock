@@ -13,9 +13,20 @@ const db = mysql.createConnection({
   database: "parc_auto_stock",
 });
 
+app.post("/login", (req, res) => {
+  const sql = "SELECT * FROM users WHERE email= ? AND password = ?";
+  db.query(sql, [req.body.email, req.body.password], (err, data) => {
+    if (err) return res.json("errors");
+    if(data.length > 0){
+      return res.json("success");
+    } else {
+      return res.json("Faile");
+    }
+  });
+});
+
 app.post("/addUser", (req, res) => {
-  const sql =
-    "INSERT INTO users (nom, prenom, email, password) VALUES ?";
+  const sql = "INSERT INTO users (nom, prenom, email, password) VALUES ?";
   const values = [
     req.body.nom,
     req.body.prenom,
@@ -23,10 +34,9 @@ app.post("/addUser", (req, res) => {
     req.body.password,
   ];
   db.query(sql, [values], (err, data) => {
-    if (err) return res.json(err);
+    if (err) return res.json("errors");
     return res.json(data);
   });
-
 });
 
 app.listen(3001, () => {
