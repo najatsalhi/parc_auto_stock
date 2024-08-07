@@ -9,6 +9,7 @@ function AddUser() {
     prenom: "",
     email: "",
     password: "",
+    confirmer: "",
   });
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
@@ -28,13 +29,12 @@ function AddUser() {
       errors.nom === "" &&
       errors.prenom === "" &&
       errors.password === "" &&
-      errors.email === ""
+      errors.email === "" &&
+      errors.confirmer === ""
     ){
       axios.post("http://localhost:3001/addUser", values)
         .then(res => {
-          
           navigate("/");
-          console.log(res);
         })
         .catch(err => console.log(err));
       console.log("success");
@@ -44,7 +44,7 @@ function AddUser() {
   return (
     <div className="d-flex justify-content-center">
       <div
-        className="bg-white "
+        className="bg "
         style={{
           borderRadius: "20px",
           boxShadow: "0px 16px 40px 0px rgba(154, 170, 207, 0.2)",
@@ -52,23 +52,23 @@ function AddUser() {
           alignSelf: "center",
           display: "flex",
           marginTop: "86px",
-          width: "590px",
+          width: "450px",
           maxWidth: "100%",
           flexDirection: "column",
           alignItems: "center",
           color: "#4b4b4b",
           fontWeight: 400,
-          padding: "80px",
+          padding: "90px",
         }}
       >
-        <h1 style={{ color: "black", textAlign: "center" }}>Ajouter</h1>
+        <h1 style={{alignItems: "center",flexDirection: "column",display: "flex",marginTop: "26px",alignSelf: "center", color: "black", textAlign: "center" }}>Ajouter</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="nom">Nom</label>
             <br></br>
             <input
               type="text"
-              placeholder="Nom"
+              placeholder=""
               name="nom"
               id="nom"
               onChange={handleChange}
@@ -79,7 +79,7 @@ function AddUser() {
             <br></br>
             <input
               type="text"
-              placeholder="Prénom"
+              placeholder=""
               name="prenom"
               id="prenom"
               onChange={handleChange}
@@ -90,7 +90,7 @@ function AddUser() {
             <br></br>
             <input
               type="email"
-              placeholder="Email"
+              placeholder=""
               name="email"
               id="email"
               onChange={handleChange}
@@ -101,7 +101,7 @@ function AddUser() {
             <br></br>
             <input
               type="password"
-              placeholder="Mot de passe"
+              placeholder=""
               name="password"
               id="password"
               onChange={handleChange}
@@ -112,12 +112,13 @@ function AddUser() {
             <br></br>
             <input
               type="password"
-              placeholder="Confirmer"
+              placeholder=""
               name="Confirmer"
               id="Confirmer"
+              onChange={handleChange}
             />
           </div>
-          <p style={{ fontSize: "12px" }}>Mot de passe oublié ?</p>
+
           <button type="submit" className="btn btn-success w-100 rounded-0">
             Ajouter
           </button>{" "}

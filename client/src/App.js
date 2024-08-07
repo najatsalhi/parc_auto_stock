@@ -2,7 +2,7 @@ import React from 'react';
 import  { BrowserRouter, Routes, Route }from 'react-router-dom';
 import AddUser from './addUser';
 import Login from './login';
-import Gestion from './Gestion_user';
+import Gestion from './Gestion';
 import Dash from './dashboard';
 import Stock from './Stock';
 import ParcAuto from './ParcAuto';

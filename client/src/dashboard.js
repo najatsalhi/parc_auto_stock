@@ -7,13 +7,12 @@ function Dash() {
   return (
     <div className="back">
       <Headers />
-      <div><h1>Dashboard</h1>
-      </div>
+      <h1>Dashboard</h1>
       <div className="grp-card">
-        <Link to={"/ParcAuto"} type="submit" className="card1">
+        <Link to="/ParcAuto"  className="card1">
           <p>ParcAuto</p>
         </Link>
-        <Link to={"/Stock"} type="submit" className="card2">
+        <Link to="/Stock" className="card2">
           <p>Stock</p>
         </Link>
       </div>

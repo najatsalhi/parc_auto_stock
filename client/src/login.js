@@ -20,8 +20,8 @@ function Login() {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        setErrors(validation(values));
-        
+        const err = validation(values);
+        setErrors(err);
         if (
             errors.password === "" &&
             errors.email === ""
