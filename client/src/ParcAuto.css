@@ -1,0 +1,45 @@
+.parc{
+    text-align: center;
+    color: rgb(115, 191, 239);
+    font-size: 50px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 60px;
+}
+/*#f1f1f1*/
+.head
+ {
+    border-radius: 0px 0px 16px 16px;
+    background-color:#F1F2F7;
+    display: flex;
+    width: 23%;
+    height: fit-content;
+    gap: 30px;
+    color: rgb(115, 191, 239);
+    justify-content: space-between;
+    padding: 6px 30px 7px 16px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    padding-right: 40px;
+}
+.div-4 {           
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+    text-align: left;
+}
+.img1 {
+    object-fit: auto;
+    object-position: center;
+    width:80px;
+}
+.di {
+    display: flex;
+    align-items: start;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    justify-content: space-between;
+    margin: auto 0;
+}
+  

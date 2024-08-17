@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link ,useNavigate} from 'react-router-dom';
-import Headers from './header.js';
+import Header from './Header.js';
 
 function Gestion() {
     return (
         <div>
-            <Headers/>
+            <Header/>
             <div className="container">
             <div><h1>users</h1>
             <table>

@@ -4,98 +4,44 @@
   padding-bottom: 78px;
   flex-direction: column;
 }
-.header {
-  border-radius: 0px 0px 16px 16px;
-  background-color: rgba(105, 169, 209, 1);
-  display: flex;
-  width: 100%;
-  gap: 30px;
-  color: rgba(255, 255, 255, 1);
-  justify-content: space-between;
-  padding: 6px 30px 7px 16px;
-  max-width: 100%;
-  flex-wrap: wrap;
-  padding-right: 40px;
-}
-@media (max-width: 991px) {
-  .header {
-    max-width: 100%;
-    flex-wrap: wrap;
-    padding-right: 20px;
-  }
-}
-.logo {
-  display: flex;
-  gap: 15px;
-  font-size: 36px;
-  font-weight: 800;
-  white-space: nowrap;
-  text-align: center;
-  letter-spacing: 0.72px;
-}
-@media (max-width: 91px) {
-  .logo {
-    white-space: initial;
-  }
-}
-
-.div-4 {           
-  font-family: Poppins, sans-serif;
-  flex-grow: 1;
-  flex-basis: auto;
-  margin: auto 0;
-  text-align: left;
-}
-.img1 {
-  object-fit: auto;
-  object-position: center;
-  width: 10%;
-}
-.di {
-  display: flex;
-  align-items: start;
-  gap: 20px;
-  font-size: 20px;
-  font-weight: 400;
-  justify-content: space-between;
-  margin: auto 0;
-}
 
 h3 {
   align-self: end;
   text-align: center;
   margin-top: 86px;
+  transform: translateY(-1rem);
   margin-bottom: 150px;
   font: 36px 'Lato',Helvetica, sans-serif;
 }
-p {
-  color: rgba(56, 145, 201, 1);
+.forget{
+  color: rgb(147, 207, 244);
   align-self: end;
-  margin-top: 17px;
+  margin-top: 50px;
   font-size: 14px;
   font-family: "Inter", sans-serif;
 }
-@media (max-width: 991px) {
-  p {
-    margin-right: 10px;
-  }
+.forget a{
+  text-decoration:none;
 }
 #butn {
   border-radius: 18px;
-  background-color: rgba(56, 145, 201, 1);
+  background-color: rgb(115, 191, 239);
   width: 278px;
+  border:none;
+  height:56px;
   max-width: 100%;
   color: rgba(255, 255, 255, 1);
   text-align: center;
-  margin: 26px 0;
+  margin: 40px 0 30px 0;
   padding: 9px ;
   font: 19px 'Poppins', sans-serif;
+  transform: translateY(20px);
 }
-@media (max-width: 91px) {
-  #butn {
-    padding: 0 20px;
-  }
+
+#butn:hover {
+  background-color: #5db7ec;
 }
+
 form{
   align-items: center;
 }
@@ -107,19 +53,15 @@ form{
   display: flex;
   margin-top: 40px;
   width: 450px;
+  height: 600px;
   max-width: 100%;
   flex-direction: column;
   color: rgba(75, 75, 75, 1);
   font-weight: 400;
   padding: 80px;
 }
-@media (max-width: 991px) {
-  .box {
-    margin-top: 40px;
-    padding: 0 80px;
-  }
-}
-name-label {
+
+.name-label1,.name-label2 {
   font-family: 16px 'Lato', sans-serif;
   display:inline;
   padding-right: 150px;
@@ -139,53 +81,130 @@ name-label {
   object-fit: auto;
   object-position: center;
   width: 23px;
+  transform: translateY(20px);
   align-self: end;
   margin-left:253px;
 }
-.log{
-  transform: translateY(-50%);
-  margin-top: 50px;
+.log1{
+  margin-top: 45px;
+}
+.log2{
+  margin-top: 75px;
 }
 .wrapper{
   position: relative;
   margin-bottom: 20px;
-
 }
 input{
   outline: none;
   border: none;
-  border-bottom: 2px solid silver;
+  border-bottom: 1px solid rgb(35, 35, 35,1);
   width: 280px;
+  height: 56px;
   position: absolute;
   margin-top: 180px;
 }
-.input-data name-label {
-  font-size: 18px;
-  pointer-events: none;
-  transition: font-size 0.5s;
-}
-.input-data:hover name-label {
-  font-size: 14px;
-  transform: translateY(-1rem);
-}
-.name-label {
+
+.name-label1 {
   position: absolute;
   left: 0;
   top: 50%;
+  padding-bottom: 20px;
   transform: translateY(-50%);
-  font-size: 16px;
-  color: gray;
+  font-size: 18px;
+  color: rgba(75, 75, 75, 1);
   pointer-events: none;
   transition: all 0.3s ease;
 }
 
 /* Floating effect when input is focused or has value */
-.name-input:focus ~ .log .name-label,
-.name-input:not(:placeholder-shown) ~ .log .name-label {
+.name-input1:focus ~ .log1 .name-label1,
+.name-input1:not(:placeholder-shown) ~ .log1 .name-label1 {
+  font-size: 14px;
+  color: rgba(75, 75, 75, 1);
   top: -1rem;
-  font-size: 16px;
-  color: rgba(56, 145, 201, 1);
+}
+.name-label2 {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  padding-bottom: 20px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: rgba(75, 75, 75, 1);
+  pointer-events: none;
+  transition: all 0.3s ease;
 }
 
+/* Floating effect when input is focused or has value */
+.name-input2:focus ~ .log2 .name-label2,
+.name-input2:not(:placeholder-shown) ~ .log2 .name-label2 {
+  font-size: 14px;
+  color: rgba(75, 75, 75, 1);
+  top: -1rem;
+}
+.cont{
+  transform:translateY(30px);
+  margin-top: 50px;
+}
+.text-danger{
+  color: red;
+  font-size: 14px;
+  position:relative;
+  margin-top:35px;
+  margin-left: 10px;
+}
 
+/*forget password page style */
 
+.back2 {
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  padding-bottom: 78px;
+  flex-direction: column;
+}
+.box2 {
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 16px 40px rgba(154, 170, 207, 0.2);
+  align-self: center;
+  display: flex;
+  margin-top: 90px;
+  width: 450px;
+  height: 490px;
+  max-width: 100%;
+  flex-direction: column;
+  color: rgba(75, 75, 75, 1);
+  font-weight: 400;
+  padding: 80px;
+}
+h3{
+  align-self: end;
+  text-align: center;
+  margin-top: 86px;
+  transform: translateY(-1rem);
+  margin-bottom: 150px;
+  font: 36px 'Lato',Helvetica, sans-serif;
+}
+.cont2{
+  transform:translateY(30px);
+  margin-top: 10px;
+}
+#butn2 {
+  border-radius: 18px;
+  background-color: rgb(115, 191, 239);
+  width: 278px;
+  border:none;
+  height:56px;
+  max-width: 100%;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  margin: 90px 0 30px 0;
+  padding: 9px ;
+  font: 20px 'Poppins', sans-serif;
+  transform: translateY(20px);
+}
+
+#butn2:hover {
+  background-color: #5db7ec;
+}

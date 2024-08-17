@@ -1,0 +1,88 @@
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.textWrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: row; /* Change to row to align items horizontally */
+  align-items: center;
+  justify-content: space-between; /* Ensures spacing between image and text */
+  text-align: left;
+  margin: auto 0;
+  padding: 20px; /* Optional padding for spacing */
+  font: 24px 'Poppins', sans-serif;
+}
+
+.title {
+  color: rgb(147, 207, 244);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.4; /* Adjust line height for better spacing */
+  letter-spacing: 1.5px;
+  margin-bottom: 40px; /* Add some spacing below the title */
+  text-align: center;
+ 
+}
+
+.description {
+  text-align: center;
+  color: #4b4b4b;
+  font-size: 19px;
+  font-family: 'Lato',sans-serif;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 4px;
+  margin-top: 20px;
+  max-width: 600px; /* Limits the width of the text */
+  margin-bottom: 30px;
+  margin-right: 90px;
+}
+
+
+.imageContainer {
+  flex: 1; /* Ensures image takes up one portion of the available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px; 
+ 
+}
+
+.imageContainer img {
+  width: 90%; /* Ensures the image scales properly */
+  height: auto; /* Maintains the aspect ratio */
+}
+
+.textContainer {
+  flex: 2; /* Ensures text takes up two portions of the available space */
+  padding-left: 20px; /* Adds space between the image and text */
+}
+
+.buttons {
+  border-radius: 18px;
+  background-color: rgb(115, 191, 239);
+  color: #fff;
+  padding: 7px 30px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.buttons:hover {
+  background-color: #5bb2e4;
+}
+
+.textContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}

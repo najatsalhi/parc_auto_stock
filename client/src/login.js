@@ -5,7 +5,7 @@ import axios from "axios";
 import "./login.css";           // login page.css with header css
 import Atsign from "./Atsign.svg";           // icon @
 import Lock from "./Lock.svg";           // icon lock
-import Headers from "./header.js";           // headers
+import Header from "./Header.js";           // headers
 
 function Login() {
     const [values,setValues]= useState
@@ -38,12 +38,12 @@ function Login() {
               .catch(err => console.log(err));
           }
     }                
-  
   return (
     <div className="back">           
-      <Headers />          
+      <Header />          
       <div className="box ">           
         <form action="" onSubmit={handleSubmit}>
+          <div className="cont">
           <h3>Welcome!</h3>
           <div className="mb-3">
             <div className="wrapper">
@@ -52,47 +52,55 @@ function Login() {
                   type="email"
                   name="email"
                   id="email"
-                  className="name-input"
+                  autocomplete="off"
+                  className="name-input1"
                   placeholder=""
                   onChange={handleInput}
                 />
-                <div className="log">
-                  <div className="name-label" htmlFor="email">
+                <div className="log1">
+                  <div className="name-label1" htmlFor="email">
                     Email
                   </div>
-                  <img className="em" src={Atsign} />
+                  <img className="em" src={Atsign} alt="icon"/>
                 </div>
               </div>
             </div>
             {errors.email && (
-              <span className="text-danger">{errors.email}</span>
+              <div className="text-danger">{errors.email}</div>
             )}
           </div>
-          <div className="mb-3">
+    
+           <div className="mb-2">
             <div className="wrapper">
               <div className="input-data">
                 <input
                   type="password"
                   name="password"
                   id="password"
-                  className="name-input"
+                  autocomplete="off"
+                  className="name-input2"
                   placeholder=""
                   onChange={handleInput}
                 />
                 
-                <div className="log">
-                  <div className="name-label" htmlFor="password">
+                <div className="log2">
+                  <div className="name-label2" htmlFor="password">
                     Mot de passe
                   </div>
-                  <img className="ps" src={Lock} />
+                  <img className="ps" src={Lock} alt="icon" />
                 </div>
               </div>
             </div>
             {errors.password && (
-              <span className="text-danger">{errors.password}</span>
+              <div className="text-danger">{errors.password}</div>
             )}
+
           </div>
-          <p>Mot de passe oublié ?</p>
+          
+          <p className="forget">
+            <a href="/Forget">Mot de passe oublié ?</a>
+          </p>
+          
           <button
             type="submit"
             id="butn"
@@ -100,6 +108,8 @@ function Login() {
           >
             Se connecter
           </button>
+
+          </div>
         </form>
       </div>
     </div>

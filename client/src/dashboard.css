@@ -4,21 +4,21 @@
     padding-bottom: 78px;
     flex-direction: column;
 }
-h1{
+.dash{
     align-self: center;
     text-align: center;
     margin-top: 86px;
-    margin-bottom: 120px;
+    margin-bottom: 20px;
     font: 36px 'Lato', Helvetica, sans-serif;
     color:rgba(56, 145, 201, 1);
-
 }
 .grp-card{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 40px;
-    gap: 30px;
+    gap: 90px;
+    transform: translateY(100px);
 }
 .card1,.card2 {
     border-radius: 20px;
@@ -27,11 +27,27 @@ h1{
     align-self: center;
     display: flex;
     margin-top: 40px;
-    width: 200px;
+    width: 240px;
+    height: 260px;
     max-width: 100%;
     flex-direction: column;
-    color: rgba(75, 75, 75, 1);
+    color: rgb(255, 255, 255);
     font-weight: 400;
     padding: 80px;
+}
 
-  }
+img{
+    object-fit: auto;
+    object-position: center;
+    width: 90%;
+}
+
+button{
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    align-self: center;
+    display: flex;
+}
+span{
+    margin-top: 30px;
+}

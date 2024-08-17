@@ -1,23 +1,40 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Headers from "./header.js"; // headers
+import { Link, useNavigate } from "react-router-dom";
+import Header from "./Header.js"; // headers
 import "./dashboard.css";
+import cars from "./cars.svg";  
+import sk from "./sk.svg";  
 
 function Dash() {
+  const navigate = useNavigate();
+
+  const handleClick1 = () => {
+    navigate("/Layout");
+  };
+
+  const handleClick2 = () => {
+    navigate("/stock");
+  };
+
   return (
-    <div className="back">
-      <Headers />
-      <h1>Dashboard</h1>
+    <div>
+      <Header />
       <div className="grp-card">
-        <Link to="/ParcAuto"  className="card1">
-          <p>ParcAuto</p>
-        </Link>
-        <Link to="/Stock" className="card2">
-          <p>Stock</p>
-        </Link>
+        <div>
+          <button className="card1" onClick={handleClick1}>
+            <img src={cars} alt="icon"/>
+            <span style={{ fontSize: "30px" ,color: "rgba(75, 75, 75, 1)"}}>ParcAuto</span>
+          </button>
+        </div>
+        <div>
+          <button className="card2" onClick={handleClick2}>
+            <img src={sk} alt="icon"/> 
+            <span style={{ fontSize: "30px" ,color: "rgba(75, 75, 75, 1)"}}>Stock</span>
+          </button>
+        </div>
       </div>
-      <style></style>
     </div>
   );
 }
+
 export default Dash;
