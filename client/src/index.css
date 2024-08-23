@@ -5,3 +5,12 @@
 .side{
     background-color: #F1F2F7;
 }
+.parc{
+    color: white;
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    flex-basis: auto;
+    margin: auto 0;
+    text-align: left;
+
+}

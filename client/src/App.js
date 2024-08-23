@@ -28,6 +28,13 @@ function App() {
           <Route index element={<Home />} />
           <Route path="members" element={<Members />} />
         </Route>
+        <Route element={<Layout />}>
+            <Route path="/Users" element={<Users />} />
+            <Route path="/Articles" element={<Articles />} />
+            <Route path="/Reports" element={<Reports />} />
+            <Route path="/Repairs" element={<Repairs />} />
+          </Route>
+
       </Routes>
     </BrowserRouter>
   );

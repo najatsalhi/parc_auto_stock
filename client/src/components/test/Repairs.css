@@ -1,0 +1,43 @@
+.repairs-page {
+    padding: 20px;
+  }
+  
+  .add-repair, .repair-list {
+    margin-bottom: 20px;
+  }
+  
+  .add-repair form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .add-repair label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .add-repair input, .add-repair textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .repair-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .repair-list th, .repair-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .repair-list th {
+    background-color: #f4f4f4
+  };

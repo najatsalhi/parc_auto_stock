@@ -26,7 +26,7 @@ body {
   letter-spacing: 1.5px;
   margin-bottom: 40px; /* Add some spacing below the title */
   text-align: center;
- 
+  margin-right: 90px;
 }
 
 .description {
@@ -40,7 +40,7 @@ body {
   margin-top: 20px;
   max-width: 600px; /* Limits the width of the text */
   margin-bottom: 30px;
-  margin-right: 90px;
+  margin-right: 70px;
 }
 
 
@@ -60,7 +60,8 @@ body {
 
 .textContainer {
   flex: 2; /* Ensures text takes up two portions of the available space */
-  padding-left: 20px; /* Adds space between the image and text */
+  padding-left: 20px;
+  align-items: center; /* Adds space between the image and text */
 }
 
 .buttons {
@@ -73,6 +74,7 @@ body {
   cursor: pointer;
   font-size: 0.8em;
   text-align: center;
+  margin-right: 70px;
 }
 
 .buttons:hover {
