@@ -1,16 +1,16 @@
 import React from 'react'
 import Sidebar from './Sidebar'
 import Header from './Header'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
 
 function Layout() {
   return (
     <div>
         <div className='flex'>
             <Sidebar/>
-            <div className='w-full ml-16 md:ml-56'>
+            <div className='layo w-full ml-17 md:ml-59'>
                 <Header/>
-                <Outlet/>
+                <Outlet />
             </div>
         </div>
     </div>

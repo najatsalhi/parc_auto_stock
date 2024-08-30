@@ -2,15 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.layo{
+    margin-left: 17rem;
+}
 .side{
     background-color: #F1F2F7;
+    width:max-content;
 }
-.parc{
+.park{
     color: white;
-    font-family: Poppins, sans-serif;
+    font-family: 'Poppins', sans-serif;
     flex-grow: 1;
     flex-basis: auto;
-    margin: auto 0;
+    margin:  25px 0 0 0;
     text-align: left;
-
+    font-size:36px;
+}
+.side .logo{
+    margin: 10px;
 }

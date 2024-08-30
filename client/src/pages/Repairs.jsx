@@ -1,5 +1,7 @@
+/* spell-checker: disable */
 import React, { useState } from 'react';
 import './Repairs.css';
+/* spell-checker: enable */
 
 const Repairs = () => {
   const [repairs, setRepairs] = useState([]);
@@ -63,7 +65,7 @@ const Repairs = () => {
           <div>
             <label>Coût:</label>
             <input
-              type="number"
+              type="text"
               value={formData.cout}
               onChange={(e) => setFormData({ ...formData, cout: e.target.value })}
               required
@@ -123,7 +125,7 @@ const Repairs = () => {
                 <tr key={repair.Id_Reparation}>
                   <td>{repair.Id_Reparation}</td>
                   <td>{repair.type}</td>
-                  <td>{repair.date}</td>
+                  <td>{/* spell-checker: disable-line */ repair.fournisseur}</td>
                   <td>{repair.cout}</td>
                   <td>{repair.fournisseur}</td>
                   <td>{repair.facture}</td>
@@ -138,4 +140,4 @@ const Repairs = () => {
   );
 };
 
-export default Repairs;
+export default Repairs;

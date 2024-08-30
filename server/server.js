@@ -43,6 +43,21 @@ app.get("/users", (req, res) => {
   });
 });
 
+app.post("/Reports", (req, res) => {
+  const sql = "INSERT INTO rapport_veh ( type,date_gener,contenu,format,id_rapport_veh) VALUES (?,STR_TO_DATE(?, '%m/%d/%Y'), ?, ?)";
+  const values = [
+    req.body.type,
+    req.body.date_gener,
+    req.body.contenu,
+    req.body.format,
+    req.body.id_rapport_veh
+  ];
+  db.query(sql, [values], (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
 app.listen(3001, () => {
   console.log("server data");
 });

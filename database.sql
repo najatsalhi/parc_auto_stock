@@ -28,10 +28,14 @@ create table vehicule
     vignette varchar(50),
     visite_technique varchar(50)
     );
-alter table vehicule add id_rapport_veh int;
-alter table vehicule add CONSTRAINT fk_vehicule FOREIGN key(id_rapport_veh) REFERENCES Rapport_veh(id_rapport_veh);
-alter table vehicule add id_reparation_veh int;
-alter table vehicule add constraint fk_vehicule1 FOREIGN key(id_reparation_veh) references reparation_veh(id_reparation_veh);
+
+alter table rapport_veh add CONSTRAINT fk_vehicule FOREIGN key(id_vehicule) REFERENCES vehicule(id_vehicule);
+alter table reparation_veh add constraint fk_vehicule1 FOREIGN key(id_vehicule) references vehicule(id_vehicule);
+alter table recharge_carb add constraint fk_vehicule3 FOREIGN key(id_vehicule) references vehicule(id_vehicule);
+
+alter table mission add constraint fk_vehicule4 FOREIGN key(id_vehicule) references vehicule(id_vehicule);
+alter table mission add constraint fk_chauffeur FOREIGN key(id_chauffeur) references chauffeur(id_chauffeur);
+
 alter table vehicule add id_recharge_carb int;
 alter table vehicule add constraint fk_vehicule2 FOREIGN key(id_recharge_carb) references recharge_carb(id_recharge_carb);
 alter table vehicule add  id_chauffeur integer;
@@ -56,16 +60,28 @@ create table article
     quantite integer
 );
 alter table article add id_rapport_art int;
-alter table article add CONSTRAINT fk_article FOREIGN key(id_rapport_art) REFERENCES Rapport_art(id_rapport_art);
-alter table article add id_reparation_art int;
-alter table article add constraint fk_article1 FOREIGN key(id_reparation_art) references repparation_art(id_reparation_art);
+ALTER TABLE rapport_art ADD CONSTRAINT fk_article FOREIGN KEY (id_article) REFERENCES article(id_article);
+ALTER TABLE repparation_art ADD CONSTRAINT fk_article1 FOREIGN KEY (id_article) REFERENCES article(id_article);
+
+create table mission
+(
+    id_mission integer PRIMARY KEY,
+    type varchar(30),
+    date_debut DATE,
+    date_fin DATE,
+    cout integer,
+    destination varchar(50),
+    id_vehicule integer,
+    id_chauffeur integer
+);
 create table Rapport_art
 (
     id_rapport_art int PRIMARY KEY ,
     type varchar(30),
     date_gener DATE,
     contenu varchar(100),
-    format varchar(50)
+    format varchar(50),
+    id_article integer
 );
 
 create table Rapport_veh
@@ -74,7 +90,8 @@ create table Rapport_veh
     type varchar(30),
     date_gener DATE,
     contenu varchar(100),
-    format varchar(50)
+    format varchar(50),
+    id_vehicule integer
 );
 
 create table repparation_art
@@ -84,7 +101,8 @@ create table repparation_art
     date_reparation DATE,
     cout integer,
     fornisseur varchar(50),
-    facture varchar(50)
+    facture varchar(50),
+    id_article integer
 );
 
 create table reparation_veh
@@ -94,7 +112,8 @@ create table reparation_veh
     date_reparation DATE,
     cout integer,
     fornisseur varchar(50),
-    facture varchar(50)
+    facture varchar(50),
+    id_vehicule integer
 );
 create table chauffeur 
 (
@@ -104,7 +123,8 @@ create table chauffeur
     telephone varchar(30),
     permie varchar(30),
     date_debut date,
-    date_fin date
+    date_fin date,
+    id_vehicule integer
 ); 
 create table recharge_carb
 (
@@ -114,6 +134,8 @@ create table recharge_carb
     cout integer,
     quantite integer,
     fournisseur varchar(50),
-    facture varchar(50)
+    facture varchar(50),
+    id_vehicule integer 
 );
 
+// change the foreign key in tables ;

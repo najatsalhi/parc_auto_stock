@@ -1,9 +1,9 @@
-// export default ArticleManagement;
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ArticleManagement.css'; // Ensure the CSS file exists and is imported
 
-const Articles = () => {
+const Vehicule = () => {
   const [articles, setArticles] = useState([]);
   const [formData, setFormData] = useState({
     nom: '',
@@ -19,15 +19,15 @@ const Articles = () => {
   }, []);
 
   const fetchArticles = () => {
-    axios.get('http://localhost:3001/articles')
+    axios.get('http://localhost:3001/vehicule')
       .then(response => setArticles(response.data))
       .catch(error => console.error('Error fetching articles:', error));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/articles', formData)
-      .then(response => {
+    axios.post('http://localhost:3001/vehicule', formData)
+      .then(() => {
         fetchArticles(); // Refresh article list after adding a new article
         setFormData({
           nom: '',
@@ -65,7 +65,7 @@ const Articles = () => {
             />
           </label>
           <label>
-            Département:
+            Département: {/* spell-checker: disable-line */}
             <input
               type="text"
               value={formData.departement}
@@ -74,7 +74,7 @@ const Articles = () => {
             />
           </label>
           <label>
-            État:
+            État: {/* spell-checker: disable-line */}
             <input
               type="text"
               value={formData.etat}
@@ -83,7 +83,7 @@ const Articles = () => {
             />
           </label>
           <label>
-            Date de Stockage:
+            Date de Stockage: {/* spell-checker: disable-line */}
             <input
               type="date"
               value={formData.date_stockage}
@@ -137,4 +137,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default Vehicule;

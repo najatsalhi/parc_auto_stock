@@ -1,7 +1,7 @@
 import React from "react";
 import ProjectStastics from "../components/ProjectStastics";
-import Platforms from "../components/ReportChart";
-import ProjectCard from "../components/FuelChart";
+import Platforms from "../components/Platforms";
+import ProjectCard from "../components/ProjectCard";
 import ClientCard from "../components/ClientCard";
 import MemberCard from "../components/MemberCard";
 
