@@ -1,41 +1,53 @@
 /* spell-checker: disable */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Repairs.css';
 /* spell-checker: enable */
 
 const Repairs = () => {
   const [repairs, setRepairs] = useState([]);
   const [formData, setFormData] = useState({
+    id_reparation: '',
     type: '',
-    date: '',
+    date_reparation: '',
     cout: '',
     fournisseur: '',
     facture: '',
-    id_Article: ''
+    id_vehicule: ''
   });
-
   const addRepair = (e) => {
     e.preventDefault();
-    if (!formData.type || !formData.date || !formData.cout || !formData.fournisseur || !formData.facture || !formData.id_Article) {
-      return;
-    }
-
-    const newRepair = {
-      Id_Reparation: Date.now(), // Unique ID using the current timestamp
-      ...formData
-    };
-
-    setRepairs([...repairs, newRepair]);
-    setFormData({
-      type: '',
-      date: '',
-      cout: '',
-      fournisseur: '',
-      facture: '',
-      id_Article: ''
-    });
+    if (formData.type || formData.date_reparation || formData.cout || formData.fournisseur || formData.facture || formData.id_vehicule) {
+      
+    axios.post("http://localhost:3001/layout/Reparation", formData)
+        .then(() => {
+          alert("Report added successfully");
+          setFormData({
+            type: '',
+            date_reparation: '',
+            cout: '', // spell-checker: disable-line
+            fournisseur: '', // spell-checker: disable-line
+            facture: '',
+            id_vehicule: ''
+          });
+          fetching();
+        })
+        .catch((err) => console.log(err));
+  }
+}
+  const fetching = () => {
+    // Fetch the reports from the database
+    axios.get("http://localhost:3001/layout/Reparation")
+      .then((res) => {
+        setRepairs(res.data);
+      })
+      .catch((err) => console.log(err));
   };
 
+  useEffect(() => {
+    fetching(); // Fetch reports on component mount
+  }, []);
+  
   return (
     <div className="repairs-page">
       <h2>Repairs</h2>
@@ -54,12 +66,13 @@ const Repairs = () => {
             />
           </div>
           <div>
-            <label>Date:</label>
+            <label>date_reparation:</label>
             <input
-              type="date"
-              value={formData.date}
-              onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+              type="text"
+              value={formData.date_reparation}
+              onChange={(e) => setFormData({ ...formData, date_reparation: e.target.value })}
               required
+              placeholder='YYYY/MM/DD'
             />
           </div>
           <div>
@@ -90,11 +103,11 @@ const Repairs = () => {
             />
           </div>
           <div>
-            <label>ID Article:</label>
+            <label>ID Vehicule:</label>
             <input
               type="text"
-              value={formData.id_Article}
-              onChange={(e) => setFormData({ ...formData, id_Article: e.target.value })}
+              value={formData.id_vehicule}
+              onChange={(e) => setFormData({ ...formData, id_vehicule: e.target.value })}
               required
             />
           </div>
@@ -113,23 +126,23 @@ const Repairs = () => {
               <tr>
                 <th>ID Réparation</th>
                 <th>Type</th>
-                <th>Date</th>
+                <th>date_reparation</th>
                 <th>Coût</th>
                 <th>Fournisseur</th>
                 <th>Facture</th>
-                <th>ID Article</th>
+                <th>ID Vehicule</th>
               </tr>
             </thead>
             <tbody>
               {repairs.map((repair) => (
-                <tr key={repair.Id_Reparation}>
-                  <td>{repair.Id_Reparation}</td>
+                <tr key={repair.id_reparation}>
+                  <td>{repair.id_reparation}</td>
                   <td>{repair.type}</td>
-                  <td>{/* spell-checker: disable-line */ repair.fournisseur}</td>
+                  <td>{repair.fournisseur}</td>
                   <td>{repair.cout}</td>
                   <td>{repair.fournisseur}</td>
                   <td>{repair.facture}</td>
-                  <td>{repair.id_Article}</td>
+                  <td>{repair.id_vehicule}</td>
                 </tr>
               ))}
             </tbody>

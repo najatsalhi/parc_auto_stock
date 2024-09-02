@@ -1,7 +1,10 @@
 import React from 'react'
 import Sidebar from './Sidebar'
 import Header from './Header'
+import './index.css';
 import { Outlet } from 'react-router-dom';
+
+
 
 function Layout() {
   return (
@@ -11,6 +14,7 @@ function Layout() {
             <div className='layo w-full ml-17 md:ml-59'>
                 <Header/>
                 <Outlet />
+                
             </div>
         </div>
     </div>

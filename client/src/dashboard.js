@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Header from "./Header.js"; // headers
+import { useNavigate } from "react-router-dom";
+import Header from "./Header"; // headers
 import "./dashboard.css";
 import cars from "./cars.svg";  
 import sk from "./sk.svg";  
@@ -9,7 +9,7 @@ function Dash() {
   const navigate = useNavigate();
 
   const handleClick1 = () => {
-    navigate("/Layout");
+    navigate("/layout/");
   };
 
   const handleClick2 = () => {

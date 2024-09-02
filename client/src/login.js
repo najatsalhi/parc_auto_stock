@@ -5,7 +5,7 @@ import axios from "axios";
 import "./login.css";           // login page.css with header css
 import Atsign from "./Atsign.svg";           // icon @
 import Lock from "./Lock.svg";           // icon lock
-import Header from "./Header.js";           // headers
+import Header from "./Header";           // headers
 
 function Login() {
     const [values,setValues]= useState
