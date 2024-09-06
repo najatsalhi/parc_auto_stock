@@ -44,7 +44,7 @@ const Sidebar = () => {
           <li
             key={index}
             className={`font-medium rounded-md py-2 px-3 justify-center hover:bg-white hover:text-Poppins-500 ${
-              activeLink === index ? "bg-indigo-100 text-indigo-500" : ""
+              activeLink === index ? "bg-blue-100 text-blue-600" : ""
             }`}
           >
             <Link
@@ -53,7 +53,7 @@ const Sidebar = () => {
               onClick={() => handleLinkClick(index)}
             >
               <span>{link.icon()}</span>
-              <span className="text-sm text-gray-500 hidden md:flex">
+              <span className="names text-sm text-gray-500 hidden md:flex">
                 {link.name}
               </span>
             </Link>
@@ -62,7 +62,7 @@ const Sidebar = () => {
       </ul>
       {/* Need Help Section */}
       <div className="flex bottom-5 left-0 px-4 py-2 cursor-pointer text-center">
-        <p className="flex items-center space-x-2 text-xs text-white py-2 px-4 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-full">
+        <p className="flex items-center space-x-2 text-xs text-white py-2 px-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full">
           <span className="hidden w-12 md:flex">Need Help</span>
           <span>?</span>
         </p>

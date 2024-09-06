@@ -94,7 +94,7 @@ const Reports = () => {
                 <label htmlFor="type">Type:</label>
               </div>
               <div>
-                <input
+                <input className="inputt"
                   type="text"
                   onChange={handleChange}
                   name="type"
@@ -108,7 +108,7 @@ const Reports = () => {
                 <label htmlFor="date_gener">Date de generation:</label>
               </div>
               <div>
-                <input
+                <input className="inputt"
                   type="date"
                   name="date_gener"
                   onChange={handleChange}
@@ -123,7 +123,7 @@ const Reports = () => {
                 <label htmlFor="contenu">Contenu:</label>
               </div>
               <div>
-                <input
+                <input className="inputt"
                   type="number"
                   onChange={handleChange}
                   name="contenu"
@@ -137,7 +137,7 @@ const Reports = () => {
                 <label htmlFor="format">Fournisseur:</label>
               </div>
               <div>
-                <input
+                <input className="inputt"
                   type="text"
                   onChange={handleChange}
                   name="format"
@@ -151,14 +151,14 @@ const Reports = () => {
                 <label htmlFor="id_vehicule">ID Vehicule:</label>
               </div>
               <div>
-                <input
+                <input className="inputt"
                   type="number"
                   onChange={handleChange}
                   name="id_vehicule"
                 />
               </div>
             </div>
-                <button id="butn3" type="submit">Add Report</button>
+                <button id="butn4" type="submit">Add Report</button>
              </div>
         </form>
       </div>
