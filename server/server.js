@@ -59,15 +59,19 @@ app.get("/users", (req, res) => {
 {/* Rapport */}
 
 app.post("/layout/Rapports", (req, res) => {
-  const sql = "INSERT INTO rapport_veh (type, date_gener, contenu, format) VALUES (?)";
+  const sql = "INSERT INTO rapport_veh (type, date_gener, contenu, format,id_vehicule) VALUES (?)";
   const values = [
     req.body.type,
     req.body.date_gener,
     req.body.contenu,
     req.body.format,
+    req.body.id_vehicule,
   ];
   db.query(sql, [values], (err, data) => {
-    if (err) return res.json(err);
+    if (err) {
+      console.error("SQL Error:", err);
+      return res.status(500).json({ error: "Database error occurred." });
+    }
     return res.json(data);
   });
 });

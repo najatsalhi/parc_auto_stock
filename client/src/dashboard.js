@@ -23,13 +23,13 @@ function Dash() {
         <div>
           <button className="card1" onClick={handleClick1}>
             <img src={cars} alt="icon"/>
-            <span style={{ fontSize: "30px" ,color: "rgba(75, 75, 75, 1)"}}>ParcAuto</span>
+            <span className="da" style={{ fontSize: "30px" ,color: "rgba(75, 75, 75, 1)"}}>ParcAuto</span>
           </button>
         </div>
         <div>
           <button className="card2" onClick={handleClick2}>
             <img src={sk} alt="icon"/> 
-            <span style={{ fontSize: "30px" ,color: "rgba(75, 75, 75, 1)"}}>Stock</span>
+            <span className="da" style={{ fontSize: "30px" ,color: "rgba(75, 75, 75, 1)"}}>Stock</span>
           </button>
         </div>
       </div>

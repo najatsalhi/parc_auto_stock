@@ -100,14 +100,12 @@ const Repairs = () => {
           <div>
             <div className="wrapper">
               <div>
-                {" "}
                 <label htmlFor="type">Type:</label>
               </div>
               <div>
-                <input
+                <input className="inputt" 
                   type="text"
                   onChange={handleChange}
-                  required
                   name="type"
                 />
               </div>
@@ -116,14 +114,13 @@ const Repairs = () => {
           <div>
             <div className="wrapper">
               <div>
-                <label htmlFor="date_reparation">date_reparation:</label>
+                <label htmlFor="date_reparation">Date de reparation:</label>
               </div>
               <div>
-                <input
+                <input className="inputt"
                   type="date"
                   name="date_reparation"
                   onChange={handleChange}
-                  required
                   placeholder="YYYY/MM/DD"
                 />
               </div>
@@ -135,10 +132,9 @@ const Repairs = () => {
                 <label htmlFor="cout">Coût:</label>
               </div>
               <div>
-                <input
+                <input className="inputt"
                   type="number"
                   onChange={handleChange}
-                  required
                   name="cout"
                 />
               </div>
@@ -150,10 +146,9 @@ const Repairs = () => {
                 <label htmlFor="fornisseur">Fournisseur:</label>
               </div>
               <div>
-                <input
+                <input className="inputt"
                   type="text"
                   onChange={handleChange}
-                  required
                   name="fornisseur"
                 />
               </div>
@@ -165,10 +160,9 @@ const Repairs = () => {
                 <label htmlFor="facture">Facture:</label>
               </div>
               <div>
-                <input
+                <input className="inputt"
                   type="text"
                   onChange={handleChange}
-                  required
                   name="facture"
                 />
               </div>
@@ -180,18 +174,18 @@ const Repairs = () => {
                 <label htmlFor="id_vehicule">ID Vehicule:</label>
               </div>
               <div>
-                <input
+                <input className="inputt"
                   type="number"
                   onChange={handleChange}
-                  required
                   name="id_vehicule"
                 />
               </div>
             </div>
-            <button id="butn3" type="submit">
-              Add Repair
-            </button>
           </div>
+            <button id="butn3" type="submit">
+              <span className="bet">Add Repair</span>
+            </button>
+          
         </form>
       </div>
 

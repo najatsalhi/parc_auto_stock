@@ -11,7 +11,7 @@ function Layout() {
     <div>
         <div className='flex'>
             <Sidebar/>
-            <div className='layo w-full ml-17 md:ml-59'>
+            <div className='layo w-full ml-18 md:ml-59'>
                 <Header/>
                 <Outlet />
                 

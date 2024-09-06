@@ -1,24 +1,68 @@
 import React, { useState, useEffect } from "react";
-import "./Reports.css";
+import "../index.css";
 import axios from "axios";
-import validation from "./validation";
 
 const Reports = () => {
   const [reports, setReports] = useState([]);
-
-  const [Data, setData] = useState({
-    id_rapport_veh: "",
+  const [errors, setErrors] = useState([]);
+  const [values, setValues] = useState({
     type: "",
     date_gener: "",
     contenu: "",
     format: "",
     id_vehicule: "",
   });
-  const setErrors = useState({})[1];
 
+  const handleChange = (event) => {
+    setValues((prev) => ({
+      ...prev,
+      [event.target.name]: [event.target.value],
+    }));
+  };
+
+  useEffect(() => {
+    fetching();
+  }, []);
+
+  const fetching = () => {
+    axios
+      .get("http://localhost:3001/layout/Rapports")
+      .then((res) => setReports(res.data))
+      .catch((err) => alert("Rapports errors"));
+  };
+
+  function validation(Data) {
+    let errors = {};
+    if (!Data.type) {
+      errors.type = "Type is required";
+    } else {
+      errors.type = "";
+    }
+    if (!Data.date_gener) {
+      errors.date_gener = "Date is required";
+    } else {
+      errors.date_gener = "";
+    }
+    if (!Data.contenu) {
+      errors.contenu = "Contenu is required";
+    } else {
+      errors.contenu = "";
+    }
+    if (!Data.format) {
+      errors.format = "Format is required";
+    } else {
+      errors.format = "";
+    }
+    if (!Data.id_vehicule) {
+      errors.id_vehicule = "ID Vehicule is required";
+    } else {
+      errors.id_vehicule = "";
+    }
+    return errors;
+  }
   const addReport = (e) => {
     e.preventDefault();
-    const err = validation(Data);
+    const err = validation(values);
     setErrors(err);
     if (
       err.type === "" &&
@@ -28,19 +72,14 @@ const Reports = () => {
       err.id_vehicule === ""
     ) {
     
-        axios.post("http://localhost:3001/Layout/Reports", Data)
+        axios.post("http://localhost:3001/Layout/Rapports", values)
           .then((res) => {
-            alert("Report added successfully");        
+            alert("Report added successfully");
+            fetching();        
           })
-          .catch((err) => console.log(err));
-      axios.get("http://localhost:3001/layout/Reports",reports)
-      .then((res) => {
-        setReports(res.data);
-      })
-      .catch((err) => console.log(err));
+          .catch((err) => alert("errors"));
+      }
     }
-  }
-
   return (
     <div className="reports-page">
       <h2>Reports</h2>
@@ -48,86 +87,79 @@ const Reports = () => {
       {/* Add Report Section */}
       <div className="add-report">
         <h3>Add New Report</h3>
-        <form onSubmit={addReport}>
-          <table>
-            <tr>
-              <td>
-                {" "}
-                <label>Type:</label>
-              </td>
-              <td>
+        <form action="" onSubmit={addReport}>
+        <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="type">Type:</label>
+              </div>
+              <div>
                 <input
                   type="text"
-                  value={Data.type}
-                  onChange={(e) => setData({ ...Data, type: e.target.value })}
-                  required
+                  onChange={handleChange}
+                  name="type"
                 />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Generation Date:</label>
-              </td>
-              <td>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="date_gener">Date de generation:</label>
+              </div>
+              <div>
                 <input
-                  type="text"
-                  value={Data.date_gener}
-                  onChange={(e) =>
-                    setData({ ...Data, date_gener: e.target.value })
-                  }
-                  required
+                  type="date"
+                  name="date_gener"
+                  onChange={handleChange}
                   placeholder="YYYY/MM/DD"
                 />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Contenu:</label>
-              </td>
-              <td>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="contenu">Contenu:</label>
+              </div>
+              <div>
                 <input
-                  value={Data.contenu}
-                  onChange={(e) =>
-                    setData({ ...Data, contenu: e.target.value })
-                  }
-                  required
+                  type="number"
+                  onChange={handleChange}
+                  name="contenu"
                 />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Format:</label>
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={Data.format}
-                  onChange={(e) => setData({ ...Data, format: e.target.value })}
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>ID Vehicule:</label>
-              </td>
-              <td>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="format">Fournisseur:</label>
+              </div>
+              <div>
                 <input
                   type="text"
-                  value={Data.id_vehicule}
-                  onChange={(e) =>
-                    setData({ ...Data, id_vehicule: e.target.value })
-                  }
-                  required
+                  onChange={handleChange}
+                  name="format"
                 />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button type="submit">Add Report</button>
-              </td>
-            </tr>
-          </table>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="id_vehicule">ID Vehicule:</label>
+              </div>
+              <div>
+                <input
+                  type="number"
+                  onChange={handleChange}
+                  name="id_vehicule"
+                />
+              </div>
+            </div>
+                <button id="butn3" type="submit">Add Report</button>
+             </div>
         </form>
       </div>
       {/* Report List Section */}
@@ -145,8 +177,7 @@ const Reports = () => {
             </tr>
           </thead>
           <tbody>
-            {
-              reports.map((report) => (
+            {reports.map((report) => (
                 <tr key={report.id_rapport_veh}>
                   <td>{report.id_rapport_veh}</td>
                   <td>{report.type}</td>

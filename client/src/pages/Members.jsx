@@ -1,228 +1,198 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import './Users.css'; // Ensure this CSS file is created and properly styled
-// import { FaSearch, FaEdit, FaTrashAlt } from 'react-icons/fa'; // Import icons
+import React, { useState, useEffect } from "react";
+import "../index.css";
+import axios from "axios";
 
-// const Users = () => {
-//   const [users, setUsers] = useState([]);
-//   const [formData, setFormData] = useState({
-//     userId: '',
-//     nom: '',
-//     prenom: '',
-//     email: '',
-//     password: '',
-//     role: '',
-//     telephone: '',
-//   });
-//   const [isEditing, setIsEditing] = useState(false);
-//   const [searchTerm, setSearchTerm] = useState('');
+const Reports = () => {
+  const [reports, setReports] = useState([]);
+  const [errors, setErrors] = useState([]);
+  const [values, setValues] = useState({
+    type: "",
+    date_gener: "",
+    contenu: "",
+    format: "",
+    id_vehicule: "",
+  });
 
-//   useEffect(() => {
-//     fetchUsers(); // Fetch users on component mount
-//   }, []);
+  const handleChange = (event) => {
+    setValues((prev) => ({
+      ...prev,
+      [event.target.name]: [event.target.value],
+    }));
+  };
 
-//   const fetchUsers = async () => {
-//     try {
-//       const response = await axios.get('http://localhost:3001/users');
-//       if (Array.isArray(response.data)) {
-//         setUsers(response.data);
-//       } else {
-//         console.error('Expected an array but received:', response.data);
-//         setUsers([]);
-//       }
-//     } catch (error) {
-//       console.error('Error fetching users:', error);
-//       setUsers([]);
-//     }
-//   };
+  useEffect(() => {
+    fetching();
+  }, []);
 
-//   const handleEdit = (user) => {
-//     setFormData({
-//       userId: user.userId,
-//       nom: user.nom,
-//       prenom: user.prenom,
-//       email: user.email,
-//       password: user.password,
-//       role: user.role,
-//       telephone: user.telephone,
-//     });
-//     setIsEditing(true);
-//   };
+  const fetching = () => {
+    axios
+      .get("http://localhost:3001/layout/Rapports")
+      .then((res) => setReports(res.data))
+      .catch((err) => alert("Rapports errors"));
+  };
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     if (
-//       !formData.nom ||
-//       !formData.prenom ||
-//       !formData.email ||
-//       !formData.password ||
-//       !formData.role ||
-//       !formData.telephone
-//     ) {
-//       console.error('Please fill in all required fields');
-//       return;
-//     }
+  function validation(Data) {
+    let errors = {};
+    if (!Data.type) {
+      errors.type = "Type is required";
+    } else {
+      errors.type = "";
+    }
+    if (!Data.date_gener) {
+      errors.date_gener = "Date is required";
+    } else {
+      errors.date_gener = "";
+    }
+    if (!Data.contenu) {
+      errors.contenu = "Contenu is required";
+    } else {
+      errors.contenu = "";
+    }
+    if (!Data.format) {
+      errors.format = "Format is required";
+    } else {
+      errors.format = "";
+    }
+    if (!Data.id_vehicule) {
+      errors.id_vehicule = "ID Vehicule is required";
+    } else {
+      errors.id_vehicule = "";
+    }
+    return errors;
+  }
+  const addReport = (e) => {
+    e.preventDefault();
+    const err = validation(values);
+    setErrors(err);
+    if (
+      err.type === "" &&
+      err.date_gener === "" &&
+      err.contenu === "" &&
+      err.format === "" &&
+      err.id_vehicule === ""
+    ) {
+    
+        axios.post("http://localhost:3001/Layout/Rapports", values)
+          .then((res) => {
+            alert("Report added successfully");
+            fetching();        
+          })
+          .catch((err) => alert("errors"));
+      }
+    }
+  return (
+    <div className="reports-page">
+      <h2>Reports</h2>
 
-//     try {
-//       if (isEditing) {
-//         await axios.put(`http://localhost:3001/users/${formData.userId}`, formData);
-//         fetchUsers(); // Refresh user list after updating user
-//       } else {
-//         await axios.post('http://localhost:3001/users', formData);
-//         fetchUsers(); // Refresh user list after adding a new user
-//       }
-//       resetForm();
-//     } catch (error) {
-//       console.error(`Error ${isEditing ? 'updating' : 'adding'} user:`, error);
-//     }
-//   };
+      {/* Add Report Section */}
+      <div className="add-report">
+        <h3>Add New Report</h3>
+        <form action="" onSubmit={addReport}>
+        <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="type">Type:</label>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  name="type"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="date_gener">Date de generation:</label>
+              </div>
+              <div>
+                <input
+                  type="date"
+                  name="date_gener"
+                  onChange={handleChange}
+                  placeholder="YYYY/MM/DD"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="contenu">Contenu:</label>
+              </div>
+              <div>
+                <input
+                  type="number"
+                  onChange={handleChange}
+                  name="contenu"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="format">Fournisseur:</label>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  name="format"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="id_vehicule">ID Vehicule:</label>
+              </div>
+              <div>
+                <input
+                  type="number"
+                  onChange={handleChange}
+                  name="id_vehicule"
+                />
+              </div>
+            </div>
+                <button id="butn3" type="submit">Add Report</button>
+             </div>
+        </form>
+      </div>
+      {/* Report List Section */}
+      <div className="report-list">
+        <h3>Report List</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Report ID</th>
+              <th>Type</th>
+              <th>Generation Date</th>
+              <th>Contenu</th>
+              <th>Format</th>
+              <th>Vehicule ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            {reports.map((report) => (
+                <tr key={report.id_rapport_veh}>
+                  <td>{report.id_rapport_veh}</td>
+                  <td>{report.type}</td>
+                  <td>{report.date_gener}</td>
+                  <td>{report.contenu}</td>
+                  <td>{report.format}</td>
+                  <td>{report.id_vehicule}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
 
-//   const handleDelete = async (id) => {
-//     if (window.confirm('Are you sure you want to delete this user?')) {
-//       try {
-//         await axios.delete(`http://localhost:3001/users/${id}`);
-//         fetchUsers();
-//       } catch (error) {
-//         console.error('Error deleting user:', error);
-//       }
-//     }
-//   };
-
-//   const resetForm = () => {
-//     setFormData({
-//       userId: '',
-//       nom: '',
-//       prenom: '',
-//       email: '',
-//       password: '',
-//       role: '',
-//       telephone: '',
-//     });
-//     setIsEditing(false);
-//   };
-
-//   const filteredUsers = users.filter((user) =>
-//     (`${user.nom} ${user.prenom}`).toLowerCase().includes(searchTerm.toLowerCase())
-//   );
-
-//   return (
-//     <div className="user-management-container">
-//       <h1>User Management</h1>
-//       <div className="user-management-content">
-//         <div className="search-bar">
-//           <input
-//             type="text"
-//             placeholder="Search users..."
-//             value={searchTerm}
-//             onChange={(e) => setSearchTerm(e.target.value)}
-//           />
-//           <FaSearch />
-//         </div>
-
-//         <form className="user-form" onSubmit={handleSubmit}>
-//           <label>
-//             Nom:
-//             <input
-//               type="text"
-//               value={formData.nom}
-//               onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
-//               required
-//             />
-//           </label>
-//           <label>
-//             Prénom:
-//             <input
-//               type="text"
-//               value={formData.prenom}
-//               onChange={(e) => setFormData({ ...formData, prenom: e.target.value })}
-//               required
-//             />
-//           </label>
-//           <label>
-//             Email:
-//             <input
-//               type="email"
-//               value={formData.email}
-//               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-//               required
-//             />
-//           </label>
-//           <label>
-//             Password:
-//             <input
-//               type="password"
-//               value={formData.password}
-//               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-//               required
-//             />
-//           </label>
-//           <label>
-//             Role:
-//             <input
-//               type="text"
-//               value={formData.role}
-//               onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-//               required
-//             />
-//           </label>
-//           <label>
-//             Telephone:
-//             <input
-//               type="text"
-//               value={formData.telephone}
-//               onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
-//               required
-//             />
-//           </label>
-//           <button type="submit">{isEditing ? 'Update User' : 'Add User'}</button>
-//           {isEditing && (
-//             <button type="button" onClick={resetForm}>
-//               Cancel
-//             </button>
-//           )}
-//         </form>
-
-//         <div className="user-list">
-//           <h2>User List</h2>
-//           <table>
-//             <thead>
-//               <tr>
-//                 <th>ID</th>
-//                 <th>Nom</th>
-//                 <th>Prénom</th>
-//                 <th>Email</th>
-//                 <th>Role</th>
-//                 <th>Telephone</th>
-//                 <th>Actions</th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               {filteredUsers.length > 0 ? (
-//                 filteredUsers.map((user) => (
-//                   <tr key={user.userId}>
-//                     <td>{user.userId}</td>
-//                     <td>{user.nom}</td>
-//                     <td>{user.prenom}</td>
-//                     <td>{user.email}</td>
-//                     <td>{user.role}</td>
-//                     <td>{user.telephone}</td>
-//                     <td>
-//                       <FaEdit onClick={() => handleEdit(user)} />
-//                       <FaTrashAlt onClick={() => handleDelete(user.userId)} />
-//                     </td>
-//                   </tr>
-//                 ))
-//               ) : (
-//                 <tr>
-//                   <td colSpan="7">No users found.</td>
-//                 </tr>
-//               )}
-//             </tbody>
-//           </table>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Users;
+export default Reports;

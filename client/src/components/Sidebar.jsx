@@ -32,7 +32,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="side fixed left-0 top-0 z-10 h-screen border-r pt-8 px-3">
+    <div className="side fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4">
       {/* Logo */}
       <div className="mb-9 flex">
         <img srcSet={rm} alt="logo" className="logo w-14 hidden md:flex" />
