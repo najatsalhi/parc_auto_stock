@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import './index.css';
+import '../index.css';
+import rm from "../rm.png";
 // ICONS
 import { LuUser } from "react-icons/lu";
 import { MdLocalGasStation } from "react-icons/md";
@@ -34,7 +35,7 @@ const Sidebar = () => {
     <div className="side fixed left-0 top-0 z-10 h-screen border-r pt-8 px-3">
       {/* Logo */}
       <div className="mb-9 flex">
-        <img src="rm.png" alt="logo" className="logo w-14 hidden md:flex" />
+        <img srcSet={rm} alt="logo" className="logo w-14 hidden md:flex" />
         <span className="park font-medium text-lg">ParcAuto</span>
       </div>
       {/* Navigation Links */}

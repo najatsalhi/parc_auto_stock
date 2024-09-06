@@ -26,18 +26,18 @@ function AddUser() {
     setErrors(err);
     
     if (
-      errors.nom === "" &&
-      errors.prenom === "" &&
-      errors.password === "" &&
-      errors.email === "" &&
-      errors.confirmer === ""
+      err.nom === "" &&
+      err.prenom === "" &&
+      err.password === "" &&
+      err.email === "" &&
+      err.confirmer === ""
     ){
       axios.post("http://localhost:3001/addUser", values)
         .then(res => {
           navigate("/");
         })
         .catch(err => console.log(err));
-      console.log("success");
+        alert("Success");
     }
     
   };
@@ -121,7 +121,7 @@ function AddUser() {
 
           <button type="submit" className="btn btn-success w-100 rounded-0">
             Ajouter
-          </button>{" "}
+          </button>
           <br></br>
           <Link to="/" className="btn btn-default">
             Annuler

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import Header from "./Header";
+import R from "./R.png";
 
 const Home1 = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Home1 = () => {
     <div><Header/>
     <div className="textWrapper">
       <div className="imageContainer">
-        <img src="R.png" alt="Wilaya" />
+        <img srcSet={R} alt="Wilaya" />
       </div>
       <div className="textContainer">
         <h1 className="title">ParcAuto</h1>

@@ -1,18 +1,27 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
+const bodyParser = require('body-parser');
+
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-//data connection
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+{/* Connection to database */}
+
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "malak",
   database: "parc_auto_stock",
 });
-//login
+
+{/* Login */}
+
 app.post("/login", (req, res) => {
   const sql = "SELECT * FROM users WHERE email= ? AND password = ?";
   db.query(sql, [req.body.email, req.body.password], (err, data) => {
@@ -20,7 +29,9 @@ app.post("/login", (req, res) => {
     return res.json(data.length > 0 ? "success" : "errors");
   });
 });
-//add user
+
+{/* Add user */}
+
 app.post("/addUser", (req, res) => {
   const sql = "INSERT INTO users (nom, prenom, email, password) VALUES (?)";
   const values = [
@@ -34,16 +45,20 @@ app.post("/addUser", (req, res) => {
     return res.json(data);
   });
 });
-//geting users
+
+{/* Geting Users */}
+
 app.get("/users", (req, res) => {
   const sql = "SELECT * FROM users";
   db.query(sql, (err, data) => {
     if (err) return res.json("errors");
-    return res.json(data.length > 0 ? data.length : err);
+    return res.json(data);
   });
 });
-//rapport
-app.post("/Layout/Rapports", (req, res) => {
+
+{/* Rapport */}
+
+app.post("/layout/Rapports", (req, res) => {
   const sql = "INSERT INTO rapport_veh (type, date_gener, contenu, format) VALUES (?)";
   const values = [
     req.body.type,
@@ -56,36 +71,44 @@ app.post("/Layout/Rapports", (req, res) => {
     return res.json(data);
   });
 });
-app.get("/Layout/Rapports", (req, res) => {
+app.get("/layout/Rapports", (req, res) => {
   const sql = "SELECT * FROM rapport_veh";
   db.query(sql, (err, data) => {
     if (err) return res.json("errors");
-    return res.json(data.length > 0 ? data.length : err);
+    return res.json(data);
   });
 });
-//reparation
-app.post("/Layout/Reparation", (req, res) => {
-  const sql = "INSERT INTO reparation_veh (type, date_reparation, cout, fournisseur,facture,id_vehicule) VALUES (?)";
+
+{/* Reparation */}
+app.post("/layout/Reparation", (req, res) => {
+  const sql = "INSERT INTO reparation_veh (type, date_reparation, cout, fornisseur,facture,id_vehicule) VALUES (?)";
   const values = [
     req.body.type,
     req.body.date_reparation,
     req.body.cout,
-    req.body.fournisseur,
+    req.body.fornisseur,
     req.body.facture,
     req.body.id_vehicule,
   ];
   db.query(sql, [values], (err, data) => {
-    if (err) return res.json(err);
+    if (err) {
+      console.error("SQL Error:", err);
+      return res.status(500).json({ error: "Database error occurred." });
+    }
+    
     return res.json(data);
   });
 });
-app.get("/Layout/Reparation", (req, res) => {
+
+
+app.get("/layout/Reparation", (req, res) => {
   const sql = "SELECT * FROM reparation_veh";
   db.query(sql, (err, data) => {
     if (err) return res.json("errors");
-    return res.json(data.length > 0 ? data.length : err);
+    return res.json(data);
   });
 });
+
 app.listen(3001, () => {
-  console.log("server data");
+  console.log("server data is running correctly");
 });

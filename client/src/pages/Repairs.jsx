@@ -1,156 +1,231 @@
-/* spell-checker: disable */
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './Repairs.css';
-/* spell-checker: enable */
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "../index.css";
 
 const Repairs = () => {
   const [repairs, setRepairs] = useState([]);
-  const [formData, setFormData] = useState({
-    id_reparation: '',
-    type: '',
-    date_reparation: '',
-    cout: '',
-    fournisseur: '',
-    facture: '',
-    id_vehicule: ''
+  const [errors, setErrors] = useState([]);
+  const [values, setValues] = useState({
+    type: "",
+    date_reparation: "",
+    cout: "",
+    fornisseur: "",
+    facture: "",
+    id_vehicule: "",
   });
-  const addRepair = (e) => {
-    e.preventDefault();
-    if (formData.type || formData.date_reparation || formData.cout || formData.fournisseur || formData.facture || formData.id_vehicule) {
-      
-    axios.post("http://localhost:3001/layout/Reparation", formData)
-        .then(() => {
-          alert("Report added successfully");
-          setFormData({
-            type: '',
-            date_reparation: '',
-            cout: '', // spell-checker: disable-line
-            fournisseur: '', // spell-checker: disable-line
-            facture: '',
-            id_vehicule: ''
-          });
-          fetching();
-        })
-        .catch((err) => console.log(err));
-  }
-}
-  const fetching = () => {
-    // Fetch the reports from the database
-    axios.get("http://localhost:3001/layout/Reparation")
-      .then((res) => {
-        setRepairs(res.data);
-      })
-      .catch((err) => console.log(err));
+
+  const handleChange = (event) => {
+    setValues((prev) => ({
+      ...prev,
+      [event.target.name]: [event.target.value],
+    }));
   };
 
   useEffect(() => {
-    fetching(); // Fetch reports on component mount
+    fetching();
   }, []);
-  
+
+  const fetching = () => {
+    axios
+      .get("http://localhost:3001/layout/Reparation")
+      .then((res) => setRepairs(res.data))
+      .catch((err) => alert("Repairs errors"));
+  };
+
+  function validation(Data) {
+    let errors = {};
+    if (!Data.type) {
+      errors.type = "Type is required";
+    } else {
+      errors.type = "";
+    }
+    if (!Data.date_reparation) {
+      errors.date_reparation = "Date is required";
+    } else {
+      errors.date_reparation = "";
+    }
+    if (!Data.cout) {
+      errors.cout = "Cout is required";
+    } else {
+      errors.cout = "";
+    }
+    if (!Data.fornisseur) {
+      errors.fornisseur = "Fournisseur is required";
+    } else {
+      errors.fornisseur = "";
+    }
+    if (!Data.facture) {
+      errors.facture = "Facture is required";
+    } else {
+      errors.facture = "";
+    }
+    if (!Data.id_vehicule) {
+      errors.id_vehicule = "ID Vehicule is required";
+    } else {
+      errors.id_vehicule = "";
+    }
+    return errors;
+  }
+
+  const addRepair = (event) => {
+    event.preventDefault();
+    const err = validation(values);
+    setErrors(err);
+    if (
+      err.type === "" &&
+      err.date_reparation === "" &&
+      err.cout === "" &&
+      err.fornisseur === "" &&
+      err.facture === "" &&
+      err.id_vehicule === ""
+    ) {
+      axios
+        .post("http://localhost:3001/layout/Reparation", values)
+        .then((res) => {
+          alert("Repairs added successfully");
+          fetching();
+        })
+        .catch((err) => alert("errors"));
+    }
+  };
+
   return (
     <div className="repairs-page">
       <h2>Repairs</h2>
 
       {/* Add Repair Section */}
-      <div className="add-repair">
+      <div className="add-repair ">
         <h3>Add New Repair</h3>
-        <form onSubmit={addRepair}>
+        <form action="" onSubmit={addRepair}>
           <div>
-            <label>Type:</label>
-            <input
-              type="text"
-              value={formData.type}
-              onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-              required
-            />
+            <div className="wrapper">
+              <div>
+                {" "}
+                <label htmlFor="type">Type:</label>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  required
+                  name="type"
+                />
+              </div>
+            </div>
           </div>
           <div>
-            <label>date_reparation:</label>
-            <input
-              type="text"
-              value={formData.date_reparation}
-              onChange={(e) => setFormData({ ...formData, date_reparation: e.target.value })}
-              required
-              placeholder='YYYY/MM/DD'
-            />
+            <div className="wrapper">
+              <div>
+                <label htmlFor="date_reparation">date_reparation:</label>
+              </div>
+              <div>
+                <input
+                  type="date"
+                  name="date_reparation"
+                  onChange={handleChange}
+                  required
+                  placeholder="YYYY/MM/DD"
+                />
+              </div>
+            </div>
           </div>
           <div>
-            <label>Coût:</label>
-            <input
-              type="text"
-              value={formData.cout}
-              onChange={(e) => setFormData({ ...formData, cout: e.target.value })}
-              required
-            />
+            <div className="wrapper">
+              <div>
+                <label htmlFor="cout">Coût:</label>
+              </div>
+              <div>
+                <input
+                  type="number"
+                  onChange={handleChange}
+                  required
+                  name="cout"
+                />
+              </div>
+            </div>
           </div>
           <div>
-            <label>Fournisseur:</label>
-            <input
-              type="text"
-              value={formData.fournisseur}
-              onChange={(e) => setFormData({ ...formData, fournisseur: e.target.value })}
-              required
-            />
+            <div className="wrapper">
+              <div>
+                <label htmlFor="fornisseur">Fournisseur:</label>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  required
+                  name="fornisseur"
+                />
+              </div>
+            </div>
           </div>
           <div>
-            <label>Facture:</label>
-            <input
-              type="text"
-              value={formData.facture}
-              onChange={(e) => setFormData({ ...formData, facture: e.target.value })}
-              required
-            />
+            <div className="wrapper">
+              <div>
+                <label htmlFor="facture">Facture:</label>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  required
+                  name="facture"
+                />
+              </div>
+            </div>
           </div>
           <div>
-            <label>ID Vehicule:</label>
-            <input
-              type="text"
-              value={formData.id_vehicule}
-              onChange={(e) => setFormData({ ...formData, id_vehicule: e.target.value })}
-              required
-            />
+            <div className="wrapper">
+              <div>
+                <label htmlFor="id_vehicule">ID Vehicule:</label>
+              </div>
+              <div>
+                <input
+                  type="number"
+                  onChange={handleChange}
+                  required
+                  name="id_vehicule"
+                />
+              </div>
+            </div>
+            <button id="butn3" type="submit">
+              Add Repair
+            </button>
           </div>
-          <button type="submit">Add Repair</button>
         </form>
       </div>
 
       {/* Repair List Section */}
       <div className="repair-list">
         <h3>Repair List</h3>
-        {repairs.length === 0 ? (
-          <p>No repairs available.</p>
-        ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>ID Réparation</th>
-                <th>Type</th>
-                <th>date_reparation</th>
-                <th>Coût</th>
-                <th>Fournisseur</th>
-                <th>Facture</th>
-                <th>ID Vehicule</th>
+        <table>
+          <thead>
+            <tr>
+              <th>ID Réparation</th>
+              <th>Type</th>
+              <th>date_reparation</th>
+              <th>Coût</th>
+              <th>Fournisseur</th>
+              <th>Facture</th>
+              <th>ID Vehicule</th>
+            </tr>
+          </thead>
+          <tbody>
+            {repairs.map((repair) => (
+              <tr key={repair.id_reparation_veh}>
+                <td>{repair.id_reparation_veh}</td>
+                <td>{repair.type}</td>
+                <td>{repair.date_reparation}</td>
+                <td>{repair.cout}</td>
+                <td>{repair.fornisseur}</td>
+                <td>{repair.facture}</td>
+                <td>{repair.id_vehicule}</td>
               </tr>
-            </thead>
-            <tbody>
-              {repairs.map((repair) => (
-                <tr key={repair.id_reparation}>
-                  <td>{repair.id_reparation}</td>
-                  <td>{repair.type}</td>
-                  <td>{repair.fournisseur}</td>
-                  <td>{repair.cout}</td>
-                  <td>{repair.fournisseur}</td>
-                  <td>{repair.facture}</td>
-                  <td>{repair.id_vehicule}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
-
 export default Repairs;
