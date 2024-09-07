@@ -4,27 +4,169 @@
 @tailwind utilities;
 
 
+/* Recharge Css*/
+
+.add-recharge form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin: 20px;
+  column-gap: 50px;
+}
+.recharge-list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.recharge-list h3 {
+  margin-Top: 60px;
+  color: #333;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+}
+
+.recharge-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recharge-list th, .recharge-list td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.recharge-list th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.recharge-list tr:hover {
+  background-color: #f5f5f5;
+}
+
+.recharge-list td {
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .add-recharge form label {
+    width: auto;
+    padding-right: 0;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .add-recharge form input {
+    width: 100%;
+  }
+
+  .recharge-list table, .recharge-list thead, .recharge-list tbody, .recharge-list th, .recharge-list td, .recharge-list tr {
+    display: block;
+  }
+
+  .recharge-list tr {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #f2f2f2;
+  }
+
+  .recharge-list td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .recharge-list td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+  }
+}
+.bet{
+  justify-content: center;
+}
+#butn5 {
+  border-radius: 18px;
+  background-color: rgb(115, 191, 239);
+  width: 278px;
+  border:none;
+  height:56px;
+  max-width: 100%;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  justify-content: center;
+  margin: 130px 0 20px 10px;
+  padding: 10px ;
+  font: 20px 'Poppins', sans-serif;
+  transform: translateY(20px);
+  }
+  
+#butn5:hover {
+    background-color: #5db7ec;
+  }
+
+/* recharges List Container */
+.recharges-page {
+  padding: 20px;
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+
+/* Add recharge Section */
+.add-recharge {
+  background-color: #fff;
+  padding: 100px;
+  padding-right: 0px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  max-width: max-content;
+}
+
+.add-recharge h3 {
+  margin-Top: 60px;
+  color: #333;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+}
+
+
+
+
+
+
+
+
+
 /* Rapports Css*/
 
 .add-report form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin: 30px;
-
+  gap: 30px;
+  margin: 20px;
+  column-gap: 50px;
 }
-
 .report-list {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .report-list h3 {
-  margin-bottom: 15px;
+  margin-Top: 60px;
   color: #333;
   text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
 }
 
 .report-list table {
@@ -108,13 +250,7 @@
 #butn4:hover {
     background-color: #5db7ec;
   }
-.add-report form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin: 20px;
-    column-gap: 20px;
-  }
+
 
 
 /* reports List Container */
@@ -128,20 +264,28 @@
 /* Add report Section */
 .add-report {
   background-color: #fff;
-  padding: 20px;
+  padding: 100px;
+  padding-right: 0px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
+  max-width: max-content;
 }
 
 .add-report h3 {
-  margin-bottom: 15px;
+  margin-Top: 60px;
   color: #333;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
 }
 
-.add-report form {
-  display: grid;
-}
+
+
+
+
+
+
 
 /* Repairs Css */
 
@@ -149,13 +293,15 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .repair-list h3 {
-  margin-bottom: 15px;
+  margin-Top: 60px;
   color: #333;
   text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
 }
 
 .repair-list table {
@@ -242,9 +388,9 @@
 .add-repair form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 30px;
     margin: 20px;
-    column-gap: 20px;
+    column-gap: 50px;
   }
 
 .wrapper{
@@ -253,7 +399,7 @@
     
   }
 label{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 20px;
     color: rgb(70, 72, 74);
     margin-right: 19rem;
@@ -278,20 +424,26 @@ label{
 /* Add Repair Section */
 .add-repair {
   background-color: #fff;
-  padding: 20px;
+  padding: 100px;
+  padding-right: 0px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
+  max-width: max-content;
 }
 
 .add-repair h3 {
-  margin-bottom: 15px;
+  margin-Top: 60px;
   color: #333;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
 }
 
-.add-repair form {
-  display: grid;
-}
+
+
+
+
 
 /* Layout Css */
 
@@ -299,8 +451,16 @@ label{
     margin-left: 22rem;
 }
 
+
+
+
+
+
 /* Side Css */
 
+a {
+  text-decoration: none !important; 
+}
 .side{
     background-color: #F1F2F7;
     width:max-content;
