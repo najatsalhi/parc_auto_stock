@@ -56,6 +56,35 @@ app.get("/users", (req, res) => {
   });
 });
 
+{/* Recharge */}
+
+app.post("/layout/Recharge", (req, res) => {
+  const sql = "INSERT INTO recharge_carb (type, date_recharge, cout,quantite,fournisseur,facture,id_vehicule) VALUES (?)";
+  const values = [
+    req.body.type,
+    req.body.date_recharge,
+    req.body.cout,
+    req.body.quantite,
+    req.body.fournisseur,
+    req.body.facture,
+    req.body.id_vehicule,
+  ];
+  db.query(sql, [values], (err, data) => {
+    if (err) {
+      console.error("SQL Error:", err);
+      return res.status(500).json({ error: "Database error occurred." });
+    }    
+    return res.json(data);
+  });
+});
+app.get("/layout/Recharge", (req, res) => {
+  const sql = "SELECT * FROM recharge_carb";
+  db.query(sql, (err, data) => {
+    if (err) return res.json("errors");
+    return res.json(data);
+  });
+});
+
 {/* Rapport */}
 
 app.post("/layout/Rapports", (req, res) => {
@@ -84,6 +113,7 @@ app.get("/layout/Rapports", (req, res) => {
 });
 
 {/* Reparation */}
+
 app.post("/layout/Reparation", (req, res) => {
   const sql = "INSERT INTO reparation_veh (type, date_reparation, cout, fornisseur,facture,id_vehicule) VALUES (?)";
   const values = [
@@ -98,13 +128,10 @@ app.post("/layout/Reparation", (req, res) => {
     if (err) {
       console.error("SQL Error:", err);
       return res.status(500).json({ error: "Database error occurred." });
-    }
-    
+    }    
     return res.json(data);
   });
 });
-
-
 app.get("/layout/Reparation", (req, res) => {
   const sql = "SELECT * FROM reparation_veh";
   db.query(sql, (err, data) => {
@@ -112,6 +139,8 @@ app.get("/layout/Reparation", (req, res) => {
     return res.json(data);
   });
 });
+
+{/* Api port */}
 
 app.listen(3001, () => {
   console.log("server data is running correctly");

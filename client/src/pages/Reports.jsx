@@ -82,11 +82,10 @@ const Reports = () => {
     }
   return (
     <div className="reports-page">
-      <h2>Reports</h2>
-
+      
       {/* Add Report Section */}
       <div className="add-report">
-        <h3>Add New Report</h3>
+        <h3>Ajouter un rapport</h3>
         <form action="" onSubmit={addReport}>
         <div>
             <div className="wrapper">

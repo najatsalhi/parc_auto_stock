@@ -4,7 +4,7 @@ import "../index.css";
 
 const Repairs = () => {
   const [repairs, setRepairs] = useState([]);
-  const [errors, setErrors] = useState([]);
+  const setErrors = useState([]);
   const [values, setValues] = useState({
     type: "",
     date_reparation: "",
@@ -91,11 +91,10 @@ const Repairs = () => {
 
   return (
     <div className="repairs-page">
-      <h2>Repairs</h2>
-
+      
       {/* Add Repair Section */}
       <div className="add-repair ">
-        <h3>Add New Repair</h3>
+        <h3>Ajouter une réparation</h3>
         <form action="" onSubmit={addRepair}>
           <div>
             <div className="wrapper">
