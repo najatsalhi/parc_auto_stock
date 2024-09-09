@@ -55,14 +55,7 @@ const Members = () => {
     } else {
       errors.password = "";
     }
-    // if (!Data.confirmer) {
-    //   errors.confirmer = "Confirmer is required";
-    // }
-    // else if (Data.password !== Data.confirmer) {
-    //   errors.confirmer = "Confirmer is required";
-    // } else {
-    //   errors.confirmer = "";
-    // }
+
     if (!Data.role) {
       errors.role = "Role is required";
     } else {

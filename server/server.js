@@ -61,6 +61,39 @@ app.get("/layout/members", (req, res) => {
   });
 });
 
+{/* Add Parsonnel */}
+
+app.post("/layout/Personnel", (req, res) => {
+  const sql = "INSERT INTO chauffeur (nom, prenom, telephone, email, permie, date_debut, date_fin, id_vehicule) VALUES (?)";
+  const values = [
+    req.body.nom,
+    req.body.prenom,
+    req.body.telephone,
+    req.body.email, 
+    req.body.permie,
+    req.body.date_debut,
+    req.body.date_fin,
+    req.body.id_vehicule,
+  ];
+  db.query(sql, [values], (err, data) => {
+    if (err) {
+      console.error("SQL Error:", err);
+      return res.status(500).json({ error: "Database error occurred." });
+    }    
+    return res.json(data);
+  });
+});
+
+{/* Geting Personnel */}
+
+app.get("/layout/Personnel", (req, res) => {
+  const sql = "SELECT * FROM chauffeur";
+  db.query(sql, (err, data) => {
+    if (err) return res.json("errors");
+    return res.json(data);
+  });
+});
+
 {/* Add Recharge */}
 
 app.post("/layout/Recharge", (req, res) => {
