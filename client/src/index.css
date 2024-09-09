@@ -4,6 +4,153 @@
 @tailwind utilities;
 
 
+
+
+
+
+/* members Css*/
+
+.add-members form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin: 20px;
+  column-gap: 50px;
+}
+.members-list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.members-list h3 {
+  margin-Top: 60px;
+  margin-bottom: 50px;
+  color: #333;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+}
+
+.members-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.members-list th, .members-list td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.members-list th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.members-list tr:hover {
+  background-color: #f5f5f5;
+}
+
+.members-list td {
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .add-members form label {
+    width: auto;
+    padding-right: 0;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .add-members form input {
+    width: 100%;
+  }
+
+  .members-list table, .members-list thead, .members-list tbody, .members-list th, .members-list td, .members-list tr {
+    display: block;
+  }
+
+  .members-list tr {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #f2f2f2;
+  }
+
+  .members-list td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .members-list td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+  }
+}
+.bet{
+  justify-content: center;
+}
+#butn5 {
+  border-radius: 18px;
+  background-color: rgb(115, 191, 239);
+  width: 278px;
+  border:none;
+  height:56px;
+  max-width: 100%;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  justify-content: center;
+  margin: 130px 0 20px 10px;
+  padding: 10px ;
+  font: 20px 'Poppins', sans-serif;
+  transform: translateY(20px);
+  }
+  
+#butn5:hover {
+    background-color: #5db7ec;
+  }
+
+/* memberss List Container */
+.memberss-page {
+  padding: 20px;
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+
+/* Add members Section */
+.add-members {
+  background-color: #fff;
+  padding: 100px;
+  padding-right: 0px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  max-width: max-content;
+}
+
+.add-members h3 {
+  margin-Top: 60px;
+  color: #333;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+}
+
+
+
+
+
+
+
+
+
+
 /* Recharge Css*/
 
 .add-recharge form {
@@ -22,6 +169,7 @@
 
 .recharge-list h3 {
   margin-Top: 60px;
+  margin-bottom: 50px;
   color: #333;
   text-align: center;
   font-family: 'Inter', sans-serif;
@@ -163,6 +311,7 @@
 
 .report-list h3 {
   margin-Top: 60px;
+  margin-bottom: 50px;
   color: #333;
   text-align: center;
   font-family: 'Inter', sans-serif;
@@ -274,6 +423,7 @@
 
 .add-report h3 {
   margin-Top: 60px;
+  margin-bottom: 30px;
   color: #333;
   text-align: center;
   font-family: 'Inter', sans-serif;
@@ -298,6 +448,7 @@
 
 .repair-list h3 {
   margin-Top: 60px;
+  margin-bottom: 50px;
   color: #333;
   text-align: center;
   font-family: 'Inter', sans-serif;
@@ -434,6 +585,7 @@ label{
 
 .add-repair h3 {
   margin-Top: 60px;
+  margin-bottom: 30px;
   color: #333;
   text-align: center;
   font-family: 'Inter', sans-serif;

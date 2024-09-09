@@ -17,24 +17,26 @@ function Login() {
   const handleInput = (event) => {
     setValues((prev) => ({
       ...prev,
-      [event.target.name]: [event.target.value],
+      [event.target.name]: event.target.value,
     }));
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const err = validation(values);
-    setErrors(err);
+    setErrors(err);  
     if (err.password === "" && err.email === "") {
       axios.post("http://localhost:3001/login", values)
         .then(res => {
           if (res.data === "success") {
             navigate("/dash");
+            alert("Welcome");
           } else {
             alert("no record");
           }
         })
-       .catch(err => console.log(err));
-      alert("Welcome");
+        
+       .catch(err => alert("errors",err));
     }
   };
   return (
@@ -55,6 +57,8 @@ function Login() {
                     className="name-input1"
                     placeholder=""
                     onChange={handleInput}
+                    value={values.email}
+                    
                   />
                   <div className="log1">
                     <div className="name-label1" htmlFor="email">
@@ -64,6 +68,11 @@ function Login() {
                   </div>
                 </div>
               </div>
+              </div>
+            {errors.email && (
+              <div className="text-danger">{errors.email}</div>
+            )}
+
             </div>
 
             <div className="mb-2">
@@ -77,8 +86,8 @@ function Login() {
                     className="name-input2"
                     placeholder=""
                     onChange={handleInput}
+                    value={values.password}
                   />
-
                   <div className="log2">
                     <div className="name-label2" htmlFor="password">
                       Mot de passe
@@ -87,8 +96,10 @@ function Login() {
                   </div>
                 </div>
               </div>
-            </div>
-
+              {errors.password && (
+              <div className="text-danger">{errors.password}</div>
+            )}
+            
             <p className="forget">
               <a href="/Forget">Mot de passe oublié ?</a>
             </p>

@@ -82,7 +82,7 @@ const Reports = () => {
     }
   return (
     <div className="reports-page">
-      
+
       {/* Add Report Section */}
       <div className="add-report">
         <h3>Ajouter un rapport</h3>
@@ -157,13 +157,13 @@ const Reports = () => {
                 />
               </div>
             </div>
-                <button id="butn4" type="submit">Add Report</button>
+                <button id="butn4" type="submit">Ajouter</button>
              </div>
         </form>
       </div>
       {/* Report List Section */}
       <div className="report-list">
-        <h3>Report List</h3>
+        <h3>Liste des Rapports</h3>
         <table>
           <thead>
             <tr>

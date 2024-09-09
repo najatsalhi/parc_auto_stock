@@ -91,7 +91,7 @@ const Repairs = () => {
 
   return (
     <div className="repairs-page">
-      
+
       {/* Add Repair Section */}
       <div className="add-repair ">
         <h3>Ajouter une réparation</h3>
@@ -182,7 +182,7 @@ const Repairs = () => {
             </div>
           </div>
             <button id="butn3" type="submit">
-              <span className="bet">Add Repair</span>
+              <span className="bet">Ajouter</span>
             </button>
           
         </form>
@@ -190,7 +190,7 @@ const Repairs = () => {
 
       {/* Repair List Section */}
       <div className="repair-list">
-        <h3>Repair List</h3>
+        <h3>Liste des réparations</h3>
         <table>
           <thead>
             <tr>

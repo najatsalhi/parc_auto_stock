@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddUser from "./addUser.js";
-import Login from "./login.js";
+import Login from "./login.jsx";
 import Gestion from "./Gestion.js";
 import Dash from "./dashboard.js";
 import Stock from "./Stock.js";

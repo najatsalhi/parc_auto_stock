@@ -98,7 +98,7 @@ const Recharge = () => {
 
   return (
     <div className="recharge-page">
-      
+
       {/* Add Recharge Section */}
       <div className="add-recharge ">
         <h3>Ajouter un recharge </h3>
@@ -203,7 +203,7 @@ const Recharge = () => {
             </div>
           </div>
             <button id="butn5" type="submit">
-              <span className="bet">Add Recharge</span>
+              <span className="bet">Ajouter</span>
             </button>
           
         </form>
@@ -211,7 +211,7 @@ const Recharge = () => {
 
       {/* Recharge List Section */}
       <div className="recharge-list">
-        <h3>Recharge List</h3>
+        <h3>Liste des Recharges</h3>
         <table>
           <thead>
             <tr>

@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
-import "../index.css";
 import axios from "axios";
+import "../index.css";
 
-const Reports = () => {
-  const [reports, setReports] = useState([]);
+const Members = () => {
+  const [members, setMembers] = useState([]);
   const [errors, setErrors] = useState([]);
   const [values, setValues] = useState({
-    type: "",
-    date_gener: "",
-    contenu: "",
-    format: "",
-    id_vehicule: "",
+    nom: "",
+    prenom: "",
+    email: "",
+    password: "",
+    confirmer: "",
+    role: "",
+    telephone: "",
   });
 
   const handleChange = (event) => {
@@ -26,168 +28,257 @@ const Reports = () => {
 
   const fetching = () => {
     axios
-      .get("http://localhost:3001/layout/Rapports")
-      .then((res) => setReports(res.data))
-      .catch((err) => alert("Rapports errors"));
+      .get("http://localhost:3001/layout/members")
+      .then((res) => setMembers(res.data))
+      .catch((err) => alert("Member errors"));
   };
 
   function validation(Data) {
     let errors = {};
-    if (!Data.type) {
-      errors.type = "Type is required";
+    if (!Data.nom) {
+      errors.nom = "Nom is required";
     } else {
-      errors.type = "";
+      errors.nom = "";
     }
-    if (!Data.date_gener) {
-      errors.date_gener = "Date is required";
+    if (!Data.prenom) {
+      errors.prenom = "Prénom is required";
     } else {
-      errors.date_gener = "";
+      errors.prenom = "";
     }
-    if (!Data.contenu) {
-      errors.contenu = "Contenu is required";
+    if (!Data.email) {
+      errors.email = "Email is required";
     } else {
-      errors.contenu = "";
+      errors.email = "";
     }
-    if (!Data.format) {
-      errors.format = "Format is required";
+    if (!Data.password) {
+      errors.password = "Password is required";
     } else {
-      errors.format = "";
+      errors.password = "";
     }
-    if (!Data.id_vehicule) {
-      errors.id_vehicule = "ID Vehicule is required";
+    // if (!Data.confirmer) {
+    //   errors.confirmer = "Confirmer is required";
+    // }
+    // else if (Data.password !== Data.confirmer) {
+    //   errors.confirmer = "Confirmer is required";
+    // } else {
+    //   errors.confirmer = "";
+    // }
+    if (!Data.role) {
+      errors.role = "Role is required";
     } else {
-      errors.id_vehicule = "";
+      errors.role = "";
+    }
+    if (!Data.telephone) {
+      errors.telephone = "Téléphone is required";
+    } else {
+      errors.telephone = "";
     }
     return errors;
   }
-  const addReport = (e) => {
-    e.preventDefault();
+
+  function pass(Data) {
+    const errors = {};
+    if (!Data.confirmer) {
+      errors.confirmer = "Confirmer is required";
+    } 
+     else{
+      errors.confirmer = "";
+     }
+     setErrors(errors);
+    return errors;
+  }
+
+  const add_members = (event) => {
+    event.preventDefault();
     const err = validation(values);
     setErrors(err);
-    if (
-      err.type === "" &&
-      err.date_gener === "" &&
-      err.contenu === "" &&
-      err.format === "" &&
-      err.id_vehicule === ""
-    ) {
-    
-        axios.post("http://localhost:3001/Layout/Rapports", values)
-          .then((res) => {
-            alert("Report added successfully");
-            fetching();        
-          })
-          .catch((err) => alert("errors"));
-      }
-    }
-  return (
-    <div className="reports-page">
-      <h2>Reports</h2>
+    const err2 = pass(values); // Now using `values` to check confirmer
+    setErrors((prev) => ({ ...prev, ...err2 })); // Combine both error sets
 
-      {/* Add Report Section */}
-      <div className="add-report">
-        <h3>Add New Report</h3>
-        <form action="" onSubmit={addReport}>
-        <div>
+    if (
+      err.nom === "" &&
+      err.prenom === "" &&
+      err.email === "" &&
+      err.password === "" &&
+      err.role === "" &&
+      err.telephone === "" &&
+      err2.confirmer === ""
+    ) {
+      axios
+        .post("http://localhost:3001/layout/members", values)
+        .then((res) => {
+          alert("Membere added successfully");
+          fetching();
+        })
+        .catch((err) => alert("errors"));
+    }
+  };
+
+  return (
+    <div className="members-page">
+      {/* Add Members Section */}
+      <div className="add-members ">
+        <h3>Ajouter un membre </h3>
+        <form action="" onSubmit={add_members}>
+          <div>
             <div className="wrapper">
               <div>
-                <label htmlFor="type">Type:</label>
+                <label htmlFor="nom">Nom:</label>
               </div>
               <div>
                 <input
+                  className="inputt"
                   type="text"
                   onChange={handleChange}
-                  name="type"
+                  name="nom"
                 />
               </div>
             </div>
+            {errors.nom && (
+              <div className="text-danger">{errors.nom}</div>
+            )}
           </div>
           <div>
             <div className="wrapper">
               <div>
-                <label htmlFor="date_gener">Date de generation:</label>
+                <label htmlFor="prenom">Prénom:</label>
               </div>
               <div>
                 <input
-                  type="date"
-                  name="date_gener"
+                  className="inputt"
+                  type="text"
+                  name="prenom"
                   onChange={handleChange}
-                  placeholder="YYYY/MM/DD"
                 />
               </div>
             </div>
+            {errors.prenom && (
+              <div className="text-danger">{errors.prenom}</div>
+            )}
           </div>
           <div>
             <div className="wrapper">
               <div>
-                <label htmlFor="contenu">Contenu:</label>
+                <label htmlFor="email">Email:</label>
               </div>
               <div>
                 <input
-                  type="number"
-                  onChange={handleChange}
-                  name="contenu"
-                />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="wrapper">
-              <div>
-                <label htmlFor="format">Fournisseur:</label>
-              </div>
-              <div>
-                <input
+                  className="inputt"
                   type="text"
                   onChange={handleChange}
-                  name="format"
+                  name="email"
                 />
               </div>
             </div>
+            {errors.email && (
+              <div className="text-danger">{errors.email}</div>
+            )}
           </div>
           <div>
             <div className="wrapper">
               <div>
-                <label htmlFor="id_vehicule">ID Vehicule:</label>
+                <label htmlFor="password">Password:</label>
               </div>
               <div>
                 <input
-                  type="number"
+                  className="inputt"
+                  type="password"
                   onChange={handleChange}
-                  name="id_vehicule"
+                  name="password"
                 />
               </div>
             </div>
-                <button id="butn3" type="submit">Add Report</button>
-             </div>
+            {errors.password && (
+              <div className="text-danger">{errors.password}</div>
+            )}
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="confirmer">Comfirmer:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="password"
+                  onChange={handleChange}
+                  name="confirmer"
+                />
+              </div>
+            </div>
+            {errors.confirmer && (
+              <div className="text-danger">{errors.confirmer}</div>
+            )}
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="role">Role:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="text"
+                  onChange={handleChange}
+                  name="role"
+                />
+              </div>
+            </div>
+            {errors.role && (
+              <div className="text-danger">{errors.role}</div>
+            )}
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="telephone">Téléphone:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="text"
+                  onChange={handleChange}
+                  name="telephone"
+                />
+              </div>
+            </div>
+            {errors.telephone && (
+              <div className="text-danger">{errors.telephone}</div>
+            )}
+          </div>
+          <button id="butn5" type="submit">
+            <span className="bet">Ajouter</span>
+          </button>
         </form>
       </div>
-      {/* Report List Section */}
-      <div className="report-list">
-        <h3>Report List</h3>
+
+      {/* Members List Section */}
+      <div className="members-list">
+        <h3>Liste des Membres</h3>
         <table>
           <thead>
             <tr>
-              <th>Report ID</th>
-              <th>Type</th>
-              <th>Generation Date</th>
-              <th>Contenu</th>
-              <th>Format</th>
-              <th>Vehicule ID</th>
+              <th>ID Membres</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Role</th>
+              <th>Téléphone</th>
             </tr>
           </thead>
           <tbody>
-            {reports.map((report) => (
-                <tr key={report.id_rapport_veh}>
-                  <td>{report.id_rapport_veh}</td>
-                  <td>{report.type}</td>
-                  <td>{report.date_gener}</td>
-                  <td>{report.contenu}</td>
-                  <td>{report.format}</td>
-                  <td>{report.id_vehicule}</td>
-                </tr>
-              ))
-            }
+            {members.map((members) => (
+              <tr key={members.id_user}>
+                <td>{members.id_user}</td>
+                <td>{members.nom}</td>
+                <td>{members.prenom}</td>
+                <td>{members.email}</td>
+                <td>{members.password}</td>
+                <td>{members.role}</td>
+                <td>{members.telephone}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -195,4 +286,4 @@ const Reports = () => {
   );
 };
 
-export default Reports;
+export default Members;

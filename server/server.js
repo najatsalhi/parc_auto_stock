@@ -32,23 +32,28 @@ app.post("/login", (req, res) => {
 
 {/* Add user */}
 
-app.post("/addUser", (req, res) => {
-  const sql = "INSERT INTO users (nom, prenom, email, password) VALUES (?)";
+app.post("/layout/members", (req, res) => {
+  const sql = "INSERT INTO users (nom, prenom, email, password, role, telephone) VALUES (?)";
   const values = [
     req.body.nom,
     req.body.prenom,
     req.body.email,
     req.body.password,
+    req.body.role,
+    req.body.telephone,
   ];
   db.query(sql, [values], (err, data) => {
-    if (err) return res.json(err);
+    if (err) {
+      console.error("SQL Error:", err);
+      return res.status(500).json({ error: "Database error occurred." });
+    }    
     return res.json(data);
   });
 });
 
 {/* Geting Users */}
 
-app.get("/users", (req, res) => {
+app.get("/layout/members", (req, res) => {
   const sql = "SELECT * FROM users";
   db.query(sql, (err, data) => {
     if (err) return res.json("errors");
@@ -56,7 +61,7 @@ app.get("/users", (req, res) => {
   });
 });
 
-{/* Recharge */}
+{/* Add Recharge */}
 
 app.post("/layout/Recharge", (req, res) => {
   const sql = "INSERT INTO recharge_carb (type, date_recharge, cout,quantite,fournisseur,facture,id_vehicule) VALUES (?)";
@@ -77,6 +82,9 @@ app.post("/layout/Recharge", (req, res) => {
     return res.json(data);
   });
 });
+
+{/* Getting Recharge */}
+
 app.get("/layout/Recharge", (req, res) => {
   const sql = "SELECT * FROM recharge_carb";
   db.query(sql, (err, data) => {
@@ -85,7 +93,7 @@ app.get("/layout/Recharge", (req, res) => {
   });
 });
 
-{/* Rapport */}
+{/* Add Rapport */}
 
 app.post("/layout/Rapports", (req, res) => {
   const sql = "INSERT INTO rapport_veh (type, date_gener, contenu, format,id_vehicule) VALUES (?)";
@@ -104,6 +112,9 @@ app.post("/layout/Rapports", (req, res) => {
     return res.json(data);
   });
 });
+
+{/* Getting Rapport */}
+
 app.get("/layout/Rapports", (req, res) => {
   const sql = "SELECT * FROM rapport_veh";
   db.query(sql, (err, data) => {
@@ -112,7 +123,7 @@ app.get("/layout/Rapports", (req, res) => {
   });
 });
 
-{/* Reparation */}
+{/* Add Reparation */}
 
 app.post("/layout/Reparation", (req, res) => {
   const sql = "INSERT INTO reparation_veh (type, date_reparation, cout, fornisseur,facture,id_vehicule) VALUES (?)";
@@ -132,6 +143,9 @@ app.post("/layout/Reparation", (req, res) => {
     return res.json(data);
   });
 });
+
+{/* Getting Reparation */}
+
 app.get("/layout/Reparation", (req, res) => {
   const sql = "SELECT * FROM reparation_veh";
   db.query(sql, (err, data) => {
@@ -140,7 +154,7 @@ app.get("/layout/Reparation", (req, res) => {
   });
 });
 
-{/* Api port */}
+{/* Api listening port */}
 
 app.listen(3001, () => {
   console.log("server data is running correctly");

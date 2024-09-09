@@ -1,5 +1,7 @@
 function validation(values){
     let error ={}
+
+    
     if(!values.nom){
         error.nom = "Nom  is required"
     }else {
