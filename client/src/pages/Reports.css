@@ -1,0 +1,44 @@
+.reports-page {
+  padding: 20px;
+}
+
+.add-report, .report-list {
+  margin-bottom: 20px;
+}
+
+.add-report form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.add-report label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.add-report input, .add-report textarea {
+  width: 100%;
+  padding: 8px;
+  
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 3px;
+}
+
+.report-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.report-list th, .report-list td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.report-list th {
+  background-color: #f4f4f4;
+}

@@ -2,15 +2,25 @@ import React, { useState, useEffect } from "react";
 import "../index.css";
 import axios from "axios";
 
-const Reports = () => {
-  const [reports, setReports] = useState([]);
+const Vehicule = () => {
+  const [vehicule, setVehicule] = useState([]);
   const [errors, setErrors] = useState([]);
   const [values, setValues] = useState({
-    type: "",
-    date_gener: "",
-    contenu: "",
-    format: "",
-    id_vehicule: "",
+    marque: "",
+    modele: "",
+    etat: "",
+    couleur: "",
+    kilometrage: "",
+    type_carburant: "",
+    num_immatriculation: "",
+    carte_grise: "",
+    assurance: "",
+    vignette: "",
+    visite_technique: "",
+    visite_technique_date: "",
+    vignette_date: "",
+    assurance_date: "",
+    
   });
 
   const handleChange = (event) => {
@@ -26,77 +36,115 @@ const Reports = () => {
 
   const fetching = () => {
     axios
-      .get("http://localhost:3001/layout/Rapports")
-      .then((res) => setReports(res.data))
-      .catch((err) => alert("Rapports errors"));
+      .get("http://localhost:3001/layout/Vehicules")
+      .then((res) => setVehicule(res.data))
+      .catch((err) => alert("Vehicule errors"));
   };
 
   function validation(Data) {
     let errors = {};
-    if (!Data.type) {
-      errors.type = "Type is required";
-    } else {
-      errors.type = "";
+    if (!Data.marque) {
+      errors.marque = "marque est obligatoire";
+    }else{
+      errors.marque = "";
     }
-    if (!Data.date_gener) {
-      errors.date_gener = "Date is required";
-    } else {
-      errors.date_gener = "";
+    if (!Data.modele) {
+      errors.modele = "modele est obligatoire";
+    }else{
+      errors.modele = "";
     }
-    if (!Data.contenu) {
-      errors.contenu = "Contenu is required";
-    } else {
-      errors.contenu = "";
+    if (!Data.etat) {
+      errors.etat = "etat est obligatoire";
     }
-    if (!Data.format) {
-      errors.format = "Format is required";
-    } else {
-      errors.format = "";
+    else{
+      errors.etat = "";
     }
-    if (!Data.id_vehicule) {
-      errors.id_vehicule = "ID Vehicule is required";
-    } else {
-      errors.id_vehicule = "";
+    if (!Data.kilometrage) {
+      errors.kilometrage = "kilometrage est obligatoire";
+    }
+    else{
+      errors.kilometrage = "";
+    }
+
+    if (!Data.type_carburant) {
+      errors.type_carburant = "Type de carburant est obligatoire";
+    }
+    else{
+      errors.type_carburant = "";
+    }
+    if (!Data.num_immatriculation) {
+      errors.num_immatriculation = "num_immatriculation est obligatoire";
+    }
+    else{ 
+      errors.num_immatriculation = "";
+    }
+
+    if (!Data.carte_grise) {
+      errors.carte_grise = "carte_grise est obligatoire";
+    }
+    else{
+      errors.carte_grise = "";
+    }
+    if (!Data.assurance) {
+      errors.assurance = "assurance est obligatoire";
+    }
+    else{
+      errors.assurance = "";
+    }
+    if (!Data.vignette) {
+      errors.vignette = "vignette est obligatoire";
+    }else{
+      errors.vignette = "";
+    }
+    if (!Data.visite_technique) {
+      errors.visite_technique = "visite_technique est obligatoire";
+    }else{
+      errors.visite_technique = "";
     }
     return errors;
   }
-  const addReport = (e) => {
+  const addVehicule = (e) => {
     e.preventDefault();
     const err = validation(values);
     setErrors(err);
     if (
-      err.type === "" &&
-      err.date_gener === "" &&
-      err.contenu === "" &&
-      err.format === "" &&
-      err.id_vehicule === ""
+      err.type_carburant === "" &&
+      err.marque === "" &&
+      err.modele === "" &&
+      err.etat === "" &&
+      err.kilometrage === "" &&
+      err.num_immatriculation === "" &&
+      err.carte_grise === "" &&
+      err.assurance === "" &&
+      err.vignette === "" &&
+      err.visite_technique === "" 
     ) {
-    
-        axios.post("http://localhost:3001/Layout/Rapports", values)
-          .then((res) => {
-            alert("Report added successfully");
-            fetching();        
-          })
-          .catch((err) => alert("errors"));
-      }
+      axios
+        .post("http://localhost:3001/Layout/Vehicules", values)
+        .then((res) => {
+          alert("Vehicule added successfully");
+          fetching();
+        })
+        .catch((err) => alert("errors"));
     }
+  };
   return (
-    <div className="reports-page">
-
-      {/* Add Report Section */}
-      <div className="add-report">
-        <h3>Ajouter un rapport</h3>
-        <form action="" onSubmit={addReport}>
-        <div>
+    <div className="vehicule-page">
+      {/* Add Vehicule Section */}
+      <div className="add-vehicule">
+        <h3>Ajouter un vehicule</h3>
+        <form action="" onSubmit={addVehicule}>
+            <div>
             <div className="wrapper">
               <div>
-                <label htmlFor="type">Type:</label>
+                <label htmlFor="marque">Marque:</label>
               </div>
               <div>
-                <input className="inputt"
+                <input
+                  className="inputt"
                   type="text"
                   onChange={handleChange}
-                  name="type"
+                  name="marque"
                 />
               </div>
             </div>
@@ -104,42 +152,150 @@ const Reports = () => {
           <div>
             <div className="wrapper">
               <div>
-                <label htmlFor="date_gener">Date de generation:</label>
+                <label htmlFor="modele">Modele:</label>
               </div>
               <div>
-                <input className="inputt"
-                  type="date"
-                  name="date_gener"
+                <input
+                  className="inputt"
+                  type="text"
                   onChange={handleChange}
+                  name="modele"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="etat">Etat:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="text"
+                  onChange={handleChange}
+                  name="etat"
+                />
+              </div>
+              </div>
+            </div>
+            <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="couleur">Couleur:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt-color"
+                  type="color"
+                  onChange={handleChange}
+                  name="couleur"
+                />
+              </div>
+            </div>
+            </div>
+            <div>
+              <div className="wrapper">
+                <div>
+                  <label htmlFor="kilometrage">Kilometrage:</label>
+                </div>
+                <div>
+                  <input
+                    className="inputt"
+                    type="number"
+                    onChange={handleChange}
+                    name="kilometrage"
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="type_carburant">Type de carburant:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="text"
+                  onChange={handleChange}
+                  name="type_carburant"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="num_immatriculation">Numero d'immatriculation:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="number"
+                  onChange={handleChange}
+                  name="num_immatriculation"
+                />
+              </div>
+              </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="carte_grise">Carte Grise:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="text"
+                  onChange={handleChange}
+                  name="carte_grise"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="assurance">Assurance:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="text"
+                  onChange={handleChange}
+                  name="assurance"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="assurance_date">Date de assurance:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="date"
+                  onChange={handleChange}
+                  name="assurance_date"
                   placeholder="YYYY/MM/DD"
                 />
               </div>
-            </div>
+              </div>
           </div>
           <div>
             <div className="wrapper">
               <div>
-                <label htmlFor="contenu">Contenu:</label>
+                <label htmlFor="vignette">Vignette:</label>
               </div>
               <div>
-                <input className="inputt"
-                  type="number"
-                  onChange={handleChange}
-                  name="contenu"
-                />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="wrapper">
-              <div>
-                <label htmlFor="format">Fournisseur:</label>
-              </div>
-              <div>
-                <input className="inputt"
+                <input
+                  className="inputt"
                   type="text"
                   onChange={handleChange}
-                  name="format"
+                  name="vignette"
                 />
               </div>
             </div>
@@ -147,46 +303,105 @@ const Reports = () => {
           <div>
             <div className="wrapper">
               <div>
-                <label htmlFor="id_vehicule">ID Vehicule:</label>
+                <label htmlFor="vignette_date">Date de vignette:</label>
               </div>
               <div>
-                <input className="inputt"
-                  type="number"
+                <input
+                  className="inputt"
+                  type="date"
                   onChange={handleChange}
-                  name="id_vehicule"
+                  name="vignette_date"
+                  placeholder="YYYY/MM/DD"
                 />
               </div>
-            </div>
-                <button id="butn4" type="submit">Ajouter</button>
-             </div>
+              </div>
+          </div>
+
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="visite_technique">Visite Technique:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="text"
+                  onChange={handleChange}
+                  name="visite_technique"
+                />
+              </div>
+              </div>
+          </div>
+          <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="visite_technique_date">Date de visite technique:</label>
+              </div>
+              <div>
+                <input
+                  className="inputt"
+                  type="date"
+                  onChange={handleChange}
+                  name="visite_technique_date"
+                  placeholder="YYYY/MM/DD"
+                />
+              </div>
+              </div>
+          </div>
+
+
+            <button id="butn4" type="submit">
+              Ajouter
+            </button>
         </form>
       </div>
-      {/* Report List Section */}
-      <div className="report-list">
-        <h3>Liste des Rapports</h3>
+      {/* Vehicule List Section */}
+      <div className="vehicule-list">
+        <h3>Liste des Vehicule</h3>
         <table>
           <thead>
             <tr>
-              <th>Report ID</th>
-              <th>Type</th>
-              <th>Generation Date</th>
-              <th>Contenu</th>
-              <th>Format</th>
               <th>Vehicule ID</th>
+              <th>Marque</th>
+              <th>Modéle</th>
+              <th>Etat</th>
+              <th>Couleur</th>
+              <th>kilometrage</th>
+              <th>Type de carburant</th>
+              <th>Numero d'immatriculation</th>
+              <th>Carte Grise</th>
+              <th>Assurance</th>
+              <th>Date de assurance</th>
+              <th>Vignette</th>
+              <th>Date de vignette</th>
+              <th>Visite Technique</th>
+              <th>Date de visite technique</th>
+
+
             </tr>
           </thead>
           <tbody>
-            {reports.map((report) => (
-                <tr key={report.id_rapport_veh}>
-                  <td>{report.id_rapport_veh}</td>
-                  <td>{report.type}</td>
-                  <td>{report.date_gener}</td>
-                  <td>{report.contenu}</td>
-                  <td>{report.format}</td>
-                  <td>{report.id_vehicule}</td>
-                </tr>
-              ))
-            }
+            {vehicule.map((vehicule) => (
+              <tr key={vehicule.id_vehicule}>
+                <td>{vehicule.id_vehicule}</td>
+                <td>{vehicule.marque}</td>
+                <td>{vehicule.modele}</td>
+                <td>{vehicule.etat}</td>
+                <td>{vehicule.couleur}</td>
+                <td>{vehicule.kilometrage}</td>
+                <td>{vehicule.type_carburant}</td>
+                <td>{vehicule.num_immatriculation}</td>
+                <td>{vehicule.carte_grise}</td>
+                <td>{vehicule.assurance}</td>
+                <td>{vehicule.assurance_date}</td>
+                <td>{vehicule.vignette}</td>
+                <td>{vehicule.vignette_date}</td>
+                <td>{vehicule.visite_technique}</td>
+                <td>{vehicule.visite_technique_date}</td>
+
+
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -194,4 +409,4 @@ const Reports = () => {
   );
 };
 
-export default Reports;
+export default Vehicule;

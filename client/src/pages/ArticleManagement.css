@@ -1,0 +1,48 @@
+.article-management-container {
+    padding: 20px;
+  }
+  
+  .article-management-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .article-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .article-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+  }
+  
+  .article-form input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .article-list {
+    margin-top: 20px;
+  }
+  
+  .article-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .article-list th, .article-list td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .article-list th {
+    background-color: #f2f2f2;
+  }
+  

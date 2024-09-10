@@ -3,18 +3,12 @@ import { Link } from "react-router-dom";
 import '../index.css';
 import rm from "../rm.png";
 // ICONS
-import { LuUser } from "react-icons/lu";
-import { MdLocalGasStation } from "react-icons/md";
-import { CgNotes } from "react-icons/cg";
-import { TbUsers } from "react-icons/tb";
-import { HiViewBoards } from "react-icons/hi";
-import { BiSolidCarMechanic } from "react-icons/bi";
+import { FaTachometerAlt, FaUsers, FaClipboardList, FaChartBar, FaTools } from 'react-icons/fa';
 import { FaCarRear } from "react-icons/fa6";
 import { PiSignOutBold } from "react-icons/pi";
-import { FaTasks } from "react-icons/fa";
 // ICONS
 
-const Sidebar = () => {
+const Sidebar1 = () => {
   const [activeLink, setActiveLink] = useState(0);
 
   const handleLinkClick = (index) => {
@@ -22,15 +16,13 @@ const Sidebar = () => {
   };
 
   const SIDEBAR_LINKS = [
-    { id: 1, path: "/Layout", name: "Tableau de bord", icon: HiViewBoards },
-    { id: 2, path: "/Layout/members", name: "Members", icon: LuUser },
-    { id: 3, path: "/Layout/Personnel", name: "Personnel", icon: TbUsers },
-    { id: 4, path: "/Layout/Vehicules", name: "Vehicules", icon: FaCarRear },
-    { id: 5, path: "/Layout/Missions", name: "Missions", icon: FaTasks },
-    { id: 6, path: "/Layout/Recharge", name: "Recharge Carburant", icon: MdLocalGasStation },
-    { id: 7, path: "/Layout/Reparation", name: "Réparation", icon: BiSolidCarMechanic },
-    { id: 8, path: "/Layout/Rapports", name: "Rapports", icon: CgNotes },
-    { id: 9, path: "/Layout/Deconnection", name: "Déconnection", icon: PiSignOutBold },
+    { id: 1, path: "/Stock", name: "Tableau de bord", icon: FaTachometerAlt },
+    { id: 2, path: "/Stock/Users", name: "Users", icon: FaUsers},
+    { id: 3, path: "/Stock/Dashboard", name: "Dashboard", icon: FaClipboardList },
+    { id: 4, path: "/Stock/Articles", name: "Articles", icon: FaCarRear },
+    { id: 5, path: "/Stock/Reports", name: "Reports", icon: FaChartBar},
+    { id: 6, path: "/Stock/Repairs", name: "Repairs", icon: FaTools },
+    { id: 7, path: "/Stock/Deconnection", name: "Déconnection", icon: PiSignOutBold },
   ];
 
   return (
@@ -73,4 +65,4 @@ const Sidebar = () => {
     </div>
   );
 };
-export default Sidebar;
+export default Sidebar1;

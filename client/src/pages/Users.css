@@ -1,0 +1,105 @@
+.user-management-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-form {
+    margin-bottom: 30px; /* Added space between form and list */
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .user-form h2 {
+    margin-bottom: 15px;
+  }
+  
+  .user-form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .user-form button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .user-form button[type="button"] {
+    background-color: #6c757d;
+  }
+  
+  .user-list h2 {
+    margin-bottom: 15px;
+  }
+  
+  .user-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-list th, .user-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .user-list th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .user-list tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .user-list button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .user-list button:last-child {
+    background-color: #dc3545;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar input {
+    flex-grow: 1;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .search-bar svg {
+    margin-left: 10px;
+    font-size: 20px;
+  }
+  
+  .user-list {
+    margin-top: 20px;
+  }
+  
+  /* Rest of your existing styles */
+  

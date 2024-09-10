@@ -1,0 +1,101 @@
+.repair-management-container {
+  padding: 20px;
+}
+
+.repair-management-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.repair-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.repair-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.repair-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.repair-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.repair-form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.repair-form button:hover {
+  background-color: #0056b3;
+}
+
+.repair-list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.repair-list h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.repair-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.repair-list th, .repair-list td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.repair-list th {
+  background-color: #f4f4f4;
+  color: #555;
+}
+
+.repair-list tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+.repair-list tr:hover td {
+  background-color: #f1f1f1;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .repair-management-content {
+    grid-template-columns: 1fr;
+  }
+
+  .repair-form button {
+    width: 100%;
+  }
+}
