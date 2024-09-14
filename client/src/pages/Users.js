@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Users.css'; // Create and import your CSS file
@@ -78,9 +76,7 @@ const Users = () => {
 
   return (
     <div className="user-management-container">
-      <h1>User Management</h1>
-      <div className="user-management-content">
-        <div className="search-bar">
+      <div className="search-bar">
           <input
             type="text"
             placeholder="Search users..."
@@ -89,6 +85,8 @@ const Users = () => {
           />
           <FaSearch />
         </div>
+      <div className="user-management-content">
+        <h1>User Management</h1>
 
         <form className="user-form" onSubmit={handleSubmit}>
           <label>
@@ -148,7 +146,7 @@ const Users = () => {
           <button type="submit">{isEditing ? 'Update User' : 'Add User'}</button>
           {isEditing && <button onClick={resetForm}>Cancel</button>}
         </form>
-
+        </div>
         <div className="user-list">
           <h2>User List</h2>
           <table>
@@ -165,8 +163,8 @@ const Users = () => {
             </thead>
             <tbody>
               {filteredUsers.map(user => (
-                <tr key={user.id_utilisateur}>
-                  <td>{user.id_utilisateur}</td>
+                <tr key={user.id_user}>
+                  <td>{user.id_user}</td>
                   <td>{user.nom}</td>
                   <td>{user.prenom}</td>
                   <td>{user.email}</td>
@@ -181,7 +179,7 @@ const Users = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      
     </div>
   );
 };

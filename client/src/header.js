@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="header">
+    <div className="header1">
        <Link to="/">
        <div className="logo">
         <img className="img1" srcSet={rm} alt="logo"/>
@@ -12,10 +12,10 @@ function Header() {
         </div>
       </Link>
       <div className="di">
-        <div>Accueil</div>
-        <div>Services</div>
-        <div>A propos</div>
-        <div>Contact</div>
+      <Link className="a0" to="/"> <div>Accueil</div></Link>
+      <a className="a1" href="#section1"> <div>Services</div></a>
+      <a className="a2" href="#section2"><div>A propos</div></a>
+      <a className="a3" href="#section3"> <div>Contact</div></a> 
       </div>
     </div>
   );

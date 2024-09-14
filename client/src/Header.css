@@ -1,4 +1,4 @@
-.header {
+.header1 {
     border-radius: 0px 0px 16px 16px;
     background-color: rgb(147, 207, 244);
     display: flex;
@@ -12,7 +12,7 @@
     padding-right: 40px;
 }
 @media (max-width: 991px) {
-    .header {
+    .heade1 {
       max-width: 100%;
       flex-wrap: wrap;
       padding-right: 20px;
@@ -36,6 +36,7 @@
 .div-4 {           
     font-family: 'Poppins', sans-serif;
     flex-grow: 1;
+    color: white;
     flex-basis: auto;
     margin: auto 0;
     text-align: left;
@@ -48,10 +49,28 @@
 .di {
     display: flex;
     align-items: start;
-    gap: 20px;
-    font-size: 20px;
-    font-weight: 400;
+    gap: 70px;
+    font-size: 21px;
+    font-weight: 450;
+    color:white;
     justify-content: space-between;
     margin: auto 0;
+    padding: 20px;
 }
+
+.a0, .a1, .a2, .a3 {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: text-decoration 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .a0 div, .a1 div, .a2 div, .a3 div {
+    padding: 10px 0;
+  }
+  
+  /* Hover Effect */
+  .a0:hover div, .a1:hover div, .a2:hover div, .a3:hover div {
+    text-decoration: underline;
+  }
   

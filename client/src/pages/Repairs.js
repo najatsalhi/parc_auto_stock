@@ -62,8 +62,9 @@ const Repairs1 = () => {
 
   return (
     <div className="repair-management-container">
-      <h1>Repair Management</h1>
+      
       <div className="repair-management-content">
+        <h1>Repair Management</h1>
         <form className="repair-form" onSubmit={handleSubmit}>
           <label>
             Type:
@@ -125,7 +126,7 @@ const Repairs1 = () => {
           </label>
           <button type="submit">Add Repair</button>
         </form>
-
+        </div>
         <div className="repair-list">
           <h2>Repair List</h2>
           <table>
@@ -155,7 +156,7 @@ const Repairs1 = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      
     </div>
   );
 };

@@ -93,7 +93,7 @@ const Repairs = () => {
     <div className="repairs-page">
 
       {/* Add Repair Section */}
-      <div className="add-repair ">
+      <div className="add-repair">
         <h3>Ajouter une réparation</h3>
         <form action="" onSubmit={addRepair}>
           <div>

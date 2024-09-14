@@ -64,8 +64,9 @@ const Articles = () => {
 
   return (
     <div className="article-management-container">
-      <h1>Article Management</h1>
+      
       <div className="article-management-content">
+        <h1>Article Management</h1>
         <form className="article-form" onSubmit={handleSubmit}>
           <label>
             Nom:
@@ -129,7 +130,7 @@ const Articles = () => {
           </label>
           <button type="submit">Add Article</button>
         </form>
-
+        </div>
         <div className="article-list">
           <h2>Article List</h2>
           <table>
@@ -159,7 +160,7 @@ const Articles = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      
     </div>
   );
 };

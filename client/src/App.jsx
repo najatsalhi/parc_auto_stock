@@ -31,13 +31,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/addUser" element={<AddUser />} />
         <Route path="/dash" element={<Dash />} />
-        <Route path="/Stock/" element={<Stock />} >
-            <Route path="Users" element={<Users />} />
-            <Route path="Dashboard" element={<Dashboard />} />
-            <Route path="Articles" element={<Articles />} />
-            <Route path="Reports" element={<Reports1 />} />
-            <Route path="Repairs" element={<Repairs1 />} />
-          </Route>
+        <Route path="/Stock/" element={<Stock />}>
+          <Route index element={<Dashboard />} />
+          <Route path="Users" element={<Users />} />
+          <Route path="Articles" element={<Articles />} />
+          <Route path="Reports" element={<Reports1 />} />
+          <Route path="Repairs" element={<Repairs1 />} />
+                  
+        </Route>
         <Route path="/Forget" element={<ForgotPassword />} />
         <Route path="/Aide" element={<Aide />} />
         <Route path="/layout/" element={<Layout />}>
@@ -49,7 +50,7 @@ function App() {
           <Route path="Missions" element={<Missions />} />
           <Route path="Deconnection" element={<Logout />} />
           <Route path="Personnel" element={<Personnel />} />
-          <Route path="Recharge" element={<Recharge/>} />
+          <Route path="Recharge" element={<Recharge />} />
         </Route>
       </Routes>
     </BrowserRouter>

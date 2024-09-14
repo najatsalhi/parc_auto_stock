@@ -18,11 +18,11 @@ const Sidebar1 = () => {
   const SIDEBAR_LINKS = [
     { id: 1, path: "/Stock", name: "Tableau de bord", icon: FaTachometerAlt },
     { id: 2, path: "/Stock/Users", name: "Users", icon: FaUsers},
-    { id: 3, path: "/Stock/Dashboard", name: "Dashboard", icon: FaClipboardList },
-    { id: 4, path: "/Stock/Articles", name: "Articles", icon: FaCarRear },
-    { id: 5, path: "/Stock/Reports", name: "Reports", icon: FaChartBar},
-    { id: 6, path: "/Stock/Repairs", name: "Repairs", icon: FaTools },
-    { id: 7, path: "/Stock/Deconnection", name: "Déconnection", icon: PiSignOutBold },
+    // { id: 3, path: "/Stock/Dashboard", name: "Dashboard", icon: FaClipboardList },
+    { id: 3, path: "/Stock/Articles", name: "Articles", icon: FaClipboardList },
+    { id: 4, path: "/Stock/Reports", name: "Reports", icon: FaChartBar},
+    { id: 5, path: "/Stock/Repairs", name: "Repairs", icon: FaTools },
+    { id: 6, path: "/Stock/Deconnection", name: "Déconnection", icon: PiSignOutBold },
   ];
 
   return (
@@ -57,9 +57,10 @@ const Sidebar1 = () => {
       </ul>
       {/* Need Help Section */}
       <div className="flex bottom-5 left-0 px-4 py-2 cursor-pointer text-center">
-      <Link to='/Aide' ><p className="flex items-center space-x-2 text-xs text-white py-2 px-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full">
-          <span className="hidden w-12 md:flex">Aide</span>
-        </p>
+      <Link to="/Aide">
+          <p className="flex items-center space-x-2 text-m text-white py-2 px-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full">
+            <span className="hidden font-medium w-12 md:flex">Aide</span>
+          </p>
         </Link>
       </div>
     </div>

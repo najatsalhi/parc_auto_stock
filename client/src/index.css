@@ -1060,6 +1060,11 @@ a {
     text-align: left;
     font-size:36px;
 }
+.link-with-icon{
+  font-family: 'Poppins', sans-serif;
+  margin: 40px;
+  gap:30px;
+}
 .side .logo{
     margin: 10px;
 }
