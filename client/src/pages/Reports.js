@@ -44,73 +44,56 @@ const Reports1 = () => {
     <div className="repor-page">
       {/* Add Report Section */}
       <div className="add-repor">
-        <h3>Add New Report</h3>
+        <h1>Add New Report</h1>
         <form className="repor-form" onSubmit={addReport}>
-          <div>
-            <div className="wrapper">
-              <div>
-                <label>Nom:</label>
-                <input
-                  type="text"
-                  value={formData.nom}
-                  onChange={(e) =>
-                    setFormData({ ...formData, nom: e.target.value })
-                  }
-                  required
-                  
-                />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="wrapper">
-              <div>
-                <label>Description:</label>
-                <input
-                  type="text"
-                  value={formData.description}
-                  onChange={(e) =>
-                    setFormData({ ...formData, description: e.target.value })
-                  }
-                  required
-                  
-                />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="wrapper">
-              <div>
-                <label>Date:</label>
-                <input
-                  type="date"
-                  value={formData.date}
-                  onChange={(e) =>
-                    setFormData({ ...formData, date: e.target.value })
-                  }
-                  required
-                  
-                />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="wrapper">
-              <div>
-                <label>Type:</label>
-                <input
-                  type="text"
-                  value={formData.type}
-                  onChange={(e) =>
-                    setFormData({ ...formData, type: e.target.value })
-                  }
-                  required
-                  
-                />
-              </div>
-            </div>
-          </div>
-          <button className="butn3" type="submit">
+          <label>
+            Nom:
+            <input
+              type="text"
+              value={formData.nom}
+              onChange={(e) =>
+                setFormData({ ...formData, nom: e.target.value })
+              }
+              required
+            />
+          </label>
+
+          <label>
+            Description:
+            <input
+              type="text"
+              value={formData.description}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
+              required
+            />
+          </label>
+
+          <label>
+            Date:
+            <input
+              type="date"
+              value={formData.date}
+              onChange={(e) =>
+                setFormData({ ...formData, date: e.target.value })
+              }
+              required
+            />
+          </label>
+
+          <label>
+            Type:
+            <input
+              type="text"
+              value={formData.type}
+              onChange={(e) =>
+                setFormData({ ...formData, type: e.target.value })
+              }
+              required
+            />
+          </label>
+          <button  type="submit">
             Add Report
           </button>
         </form>

@@ -69,4 +69,23 @@
   .article-list td {
     color: #555;
   }
+  .article-form button {
+    border-radius: 18px;
+    background-color: rgb(115, 191, 239);
+    width: 278px;
+    border:none;
+    height:56px;
+    max-width: 100%;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    justify-content: center;
+    margin: 50px 0 40px 0;
+    padding: 10px ;
+    font: 20px 'Poppins', sans-serif;
+    transform: translateY(20px);
+  }
+  
+  .article-form button[type="button"] {
+    background-color: #6c757d;
+  }
   

@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import '../index.css';
 import rm from "../rm.png";
 // ICONS
-import { FaTachometerAlt, FaUsers, FaClipboardList, FaChartBar, FaTools } from 'react-icons/fa';
-import { FaCarRear } from "react-icons/fa6";
+import {  FaUsers, FaClipboardList, FaTools } from 'react-icons/fa';
 import { PiSignOutBold } from "react-icons/pi";
+import { HiViewBoards } from "react-icons/hi";
+import { CgNotes } from "react-icons/cg";
 // ICONS
 
 const Sidebar1 = () => {
@@ -16,11 +17,10 @@ const Sidebar1 = () => {
   };
 
   const SIDEBAR_LINKS = [
-    { id: 1, path: "/Stock", name: "Tableau de bord", icon: FaTachometerAlt },
+    { id: 1, path: "/Stock", name: "Tableau de bord", icon: HiViewBoards },
     { id: 2, path: "/Stock/Users", name: "Users", icon: FaUsers},
-    // { id: 3, path: "/Stock/Dashboard", name: "Dashboard", icon: FaClipboardList },
     { id: 3, path: "/Stock/Articles", name: "Articles", icon: FaClipboardList },
-    { id: 4, path: "/Stock/Reports", name: "Reports", icon: FaChartBar},
+    { id: 4, path: "/Stock/Reports", name: "Reports", icon: CgNotes},
     { id: 5, path: "/Stock/Repairs", name: "Repairs", icon: FaTools },
     { id: 6, path: "/Stock/Deconnection", name: "Déconnection", icon: PiSignOutBold },
   ];
@@ -56,7 +56,7 @@ const Sidebar1 = () => {
         ))}
       </ul>
       {/* Need Help Section */}
-      <div className="flex bottom-5 left-0 px-4 py-2 cursor-pointer text-center">
+      <div className="flex justify-center bottom-5 left-0 px-4 py-2 cursor-pointer text-center">
       <Link to="/Aide">
           <p className="flex items-center space-x-2 text-m text-white py-2 px-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full">
             <span className="hidden font-medium w-12 md:flex">Aide</span>

@@ -29,25 +29,10 @@ const Sidebar = () => {
     { id: 3, path: "/Layout/Personnel", name: "Personnel", icon: TbUsers },
     { id: 4, path: "/Layout/Vehicules", name: "Véhicules", icon: FaCarRear },
     { id: 5, path: "/Layout/Missions", name: "Missions", icon: FaTasks },
-    {
-      id: 6,
-      path: "/Layout/Recharge",
-      name: "Recharge Carburant",
-      icon: MdLocalGasStation,
-    },
-    {
-      id: 7,
-      path: "/Layout/Reparation",
-      name: "Réparation",
-      icon: BiSolidCarMechanic,
-    },
+    { id: 6, path: "/Layout/Recharge", name: "Recharge Carburant", icon: MdLocalGasStation },
+    { id: 7, path: "/Layout/Reparation", name: "Réparation", icon: BiSolidCarMechanic },
     { id: 8, path: "/Layout/Rapports", name: "Rapports", icon: CgNotes },
-    {
-      id: 9,
-      path: "/Layout/Deconnection",
-      name: "Déconnexion",
-      icon: PiSignOutBold,
-    },
+    { id: 9, path: "/Layout/Deconnection", name: "Déconnexion", icon: PiSignOutBold },
   ];
 
   return (
@@ -60,11 +45,10 @@ const Sidebar = () => {
           <span className="park font-medium text-lg">ParcAuto</span>
         </div>
       </Link>
-      
+
       {/* Navigation Links */}
 
       <ul className="mt-6 space-y-6">
-
         {SIDEBAR_LINKS.map((link, index) => (
           <li
             key={index}
@@ -85,7 +69,7 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
-    
+
       {/* Need Help Section */}
       <div className="flex justify-center text-center bottom-5 left-0 px-4 py-2 cursor-pointer text-center">
         <Link to="/Aide">
@@ -94,7 +78,6 @@ const Sidebar = () => {
           </p>
         </Link>
       </div>
-     
     </div>
   );
 };
