@@ -20,8 +20,8 @@ const Sidebar1 = () => {
     { id: 1, path: "/Stock", name: "Tableau de bord", icon: HiViewBoards },
     { id: 2, path: "/Stock/Users", name: "Users", icon: FaUsers},
     { id: 3, path: "/Stock/Articles", name: "Articles", icon: FaClipboardList },
-    { id: 4, path: "/Stock/Reports", name: "Reports", icon: CgNotes},
-    { id: 5, path: "/Stock/Repairs", name: "Repairs", icon: FaTools },
+    { id: 4, path: "/Stock/Reports", name: "Rapports", icon: CgNotes},
+    { id: 5, path: "/Stock/Repairs", name: "Réparation", icon: FaTools },
     { id: 6, path: "/Stock/Deconnection", name: "Déconnection", icon: PiSignOutBold },
   ];
 

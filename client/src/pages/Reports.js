@@ -6,9 +6,9 @@ import "./Reports.css";
 const Reports1 = () => {
   const [reports, setReports] = useState([]);
   const [formData, setFormData] = useState({
-    nom: "",
-    description: "",
-    date: "",
+    format: "",
+    contenu: "",
+    date_gener: "",
     type: "",
   });
 
@@ -31,9 +31,9 @@ const Reports1 = () => {
         alert("Report added successfully");
         fetchReports(); // Refresh report list after adding a new report
         setFormData({
-          nom: "",
-          description: "",
-          date: "",
+          format: "",
+          contenu: "",
+          date_gener: "",
           type: "",
         });
       })
@@ -47,36 +47,36 @@ const Reports1 = () => {
         <h1>Add New Report</h1>
         <form className="repor-form" onSubmit={addReport}>
           <label>
-            Nom:
+            Format:
             <input
               type="text"
-              value={formData.nom}
+              value={formData.format}
               onChange={(e) =>
-                setFormData({ ...formData, nom: e.target.value })
+                setFormData({ ...formData, format: e.target.value })
               }
               required
             />
           </label>
 
           <label>
-            Description:
+            Contenu:
             <input
               type="text"
-              value={formData.description}
+              value={formData.contenu}
               onChange={(e) =>
-                setFormData({ ...formData, description: e.target.value })
+                setFormData({ ...formData, contenu: e.target.value })
               }
               required
             />
           </label>
 
           <label>
-            Date:
+            Date de generation:
             <input
               type="date"
-              value={formData.date}
+              value={formData.date_gener}
               onChange={(e) =>
-                setFormData({ ...formData, date: e.target.value })
+                setFormData({ ...formData, date_gener: e.target.value })
               }
               required
             />
@@ -109,19 +109,20 @@ const Reports1 = () => {
             <thead>
               <tr>
                 <th>ID Report</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Date</th>
+                <th>Format</th>
                 <th>Type</th>
+                <th>Date de generation</th>
+                <th>Contenu</th>
+                
               </tr>
             </thead>
             <tbody>
               {reports.map((report) => (
-                <tr key={report.id_report}>
-                  <td>{report.id_report}</td>
-                  <td>{report.nom}</td>
-                  <td>{report.description}</td>
-                  <td>{report.date}</td>
+                <tr key={report.id_rapport_art}>
+                  <td>{report.id_rapport_art}</td>
+                  <td>{report.format}</td>
+                  <td>{report.contenu}</td>
+                  <td>{report.date_gener}</td>
                   <td>{report.type}</td>
                 </tr>
               ))}

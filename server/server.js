@@ -34,9 +34,9 @@ app.post("/login", (req, res) => {
 /// Routes pour les utilisateurs
 app.post('/users', (req, res) => {
   const { nom, prenom, email, password, role, telephone } = req.body;
-  const hashedPassword = bcrypt.hashSync(password, 10);
+  
   const sql = "INSERT INTO users (nom, prenom, email, password, role, telephone) VALUES (?, ?, ?, ?, ?, ?)";
-  db.query(sql, [nom, prenom, email, hashedPassword, role, telephone], (err, result) => {
+  db.query(sql, [nom, prenom, email, password, role, telephone], (err, result) => {
     if (err) return res.status(500).json({ error: err });
     res.status(201).json({ message: 'Utilisateur ajouté avec succès', data: result });
   });
@@ -63,7 +63,7 @@ app.get('/articles', (req, res) => {
 
 app.post('/articles', (req, res) => {
   const { nom, description, departement, etat, date_stockage, id_stock } = req.body; // Include id_stock here
-  const query = 'INSERT INTO article (nom, description, departement, etat, date_stockage, id_stock) VALUES (?);'
+  const query = 'INSERT INTO article (nom, description, departement, etat, date_stockage, id_stock) VALUES (?,?,?,?,?,?);'
   db.query(query, [nom, description, departement, etat, date_stockage, id_stock], (err, result) => {
     if (err) {
       console.error('Error adding article:', err);
@@ -78,20 +78,18 @@ app.post('/articles', (req, res) => {
 
 
 // Routes pour les réparations
-app.get('/repairs', async (req, res) => {
-  try {
-    const repairs = await db.query('SELECT * FROM repairs'); // Adjust your query as needed
-    res.json(repairs);
-  } catch (error) {
-    console.error('Error fetching repairs:', error);
-    res.status(500).send('Internal Server Error');
-  }
+app.get('/repairs', (req, res) => {
+  db.query("SELECT * FROM repparation_art", (err, results) => {
+    if (err) return res.status(500).json({ error: err });
+    res.json(results);
+  });
 });
 
+
 app.post('/repairs', (req, res) => {
-  const { type, date_reparation, cout, fournisseur, facture, id_article } = req.body;
-  const sql = "INSERT INTO repparation_art (type, date_reparation, cout, fournisseur, facture, id_article) VALUES (?, ?, ?, ?, ?, ?)";
-  db.query(sql, [type, date_reparation, cout, fournisseur, facture, id_article], (err, result) => {
+  const { type, date_reparation, cout, fornisseur, facture, id_article } = req.body;
+  const sql = "INSERT INTO repparation_art (type, date_reparation, cout, fornisseur, facture, id_article) VALUES (?, ?, ?, ?, ?, ?)";
+  db.query(sql, [type, date_reparation, cout, fornisseur, facture, id_article], (err, result) => {
     if (err) return res.status(500).json({ error: err });
     res.status(201).json({ message: 'Réparation ajoutée avec succès', data: result });
   });

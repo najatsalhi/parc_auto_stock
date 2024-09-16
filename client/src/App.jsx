@@ -37,7 +37,7 @@ function App() {
           <Route path="Articles" element={<Articles />} />
           <Route path="Reports" element={<Reports1 />} />
           <Route path="Repairs" element={<Repairs1 />} />
-                  
+          <Route path="Deconnection" element={<Logout />} />
         </Route>
         <Route path="/Forget" element={<ForgotPassword />} />
         <Route path="/Aide" element={<Aide />} />

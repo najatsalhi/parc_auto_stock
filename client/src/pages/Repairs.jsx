@@ -4,7 +4,7 @@ import "../index.css";
 
 const Repairs = () => {
   const [repairs, setRepairs] = useState([]);
-  const setErrors = useState([]);
+
   const [values, setValues] = useState({
     type: "",
     date_reparation: "",
@@ -32,53 +32,11 @@ const Repairs = () => {
       .catch((err) => alert("Repairs errors"));
   };
 
-  function validation(Data) {
-    let errors = {};
-    if (!Data.type) {
-      errors.type = "Type is required";
-    } else {
-      errors.type = "";
-    }
-    if (!Data.date_reparation) {
-      errors.date_reparation = "Date is required";
-    } else {
-      errors.date_reparation = "";
-    }
-    if (!Data.cout) {
-      errors.cout = "Cout is required";
-    } else {
-      errors.cout = "";
-    }
-    if (!Data.fornisseur) {
-      errors.fornisseur = "Fournisseur is required";
-    } else {
-      errors.fornisseur = "";
-    }
-    if (!Data.facture) {
-      errors.facture = "Facture is required";
-    } else {
-      errors.facture = "";
-    }
-    if (!Data.id_vehicule) {
-      errors.id_vehicule = "ID Vehicule is required";
-    } else {
-      errors.id_vehicule = "";
-    }
-    return errors;
-  }
+ 
 
   const addRepair = (event) => {
     event.preventDefault();
-    const err = validation(values);
-    setErrors(err);
-    if (
-      err.type === "" &&
-      err.date_reparation === "" &&
-      err.cout === "" &&
-      err.fornisseur === "" &&
-      err.facture === "" &&
-      err.id_vehicule === ""
-    ) {
+   
       axios
         .post("http://localhost:3001/layout/Reparation", values)
         .then((res) => {
@@ -86,7 +44,7 @@ const Repairs = () => {
           fetching();
         })
         .catch((err) => alert("errors"));
-    }
+    
   };
 
   return (
@@ -184,10 +142,8 @@ const Repairs = () => {
             <button id="butn3" type="submit">
               <span className="bet">Ajouter</span>
             </button>
-          
         </form>
       </div>
-
       {/* Repair List Section */}
       <div className="repair-list">
         <h3>Liste des réparations</h3>

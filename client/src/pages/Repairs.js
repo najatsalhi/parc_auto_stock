@@ -8,11 +8,10 @@ const Repairs1 = () => {
     type: '',
     date_reparation: '',
     cout: '',
-    fournisseur: '',
+    fornisseur: '',
     facture: '',
     id_article: ''
   });
-  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     fetchRepairs(); // Fetch existing repairs when the component mounts
@@ -23,25 +22,8 @@ const Repairs1 = () => {
       .then(response => setRepairs(response.data))
       .catch(error => console.error('Error fetching repairs:', error));
   };
-
-  const validation = (data) => {
-    let errors = {};
-
-    if (!data.type) errors.type = "Type is required";
-    if (!data.date_reparation) errors.date_reparation = "Date de Réparation is required";
-    if (!data.cout) errors.cout = "Cout is required";
-    if (!data.fournisseur) errors.fournisseur = "Fournisseur is required";
-    if (!data.id_article) errors.id_article = "ID Article is required";
-
-    return errors;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const err = validation(formData);
-    setErrors(err);
-
-    if (Object.keys(err).length === 0) {
       axios
         .post("http://localhost:3001/repairs", formData)
         .then((res) => {
@@ -51,21 +33,21 @@ const Repairs1 = () => {
             type: '',
             date_reparation: '',
             cout: '',
-            fournisseur: '',
+            fornisseur: '',
             facture: '',
             id_article: ''
           });
         })
         .catch((err) => console.log("Error:", err));
-    }
+    
   };
 
   return (
-    <div className="repair-management-container">
+    <div className="repa-management-container">
       
-      <div className="repair-management-content">
+      <div className="repa-management-content">
         <h1>Repair Management</h1>
-        <form className="repair-form" onSubmit={handleSubmit}>
+        <form className="repa-form" onSubmit={handleSubmit}>
           <label>
             Type:
             <input
@@ -74,7 +56,6 @@ const Repairs1 = () => {
               onChange={e => setFormData({ ...formData, type: e.target.value })}
               required
             />
-            {errors.type && <p className="error">{errors.type}</p>}
           </label>
           <label>
             Date de Réparation:
@@ -84,7 +65,6 @@ const Repairs1 = () => {
               onChange={e => setFormData({ ...formData, date_reparation: e.target.value })}
               required
             />
-            {errors.date_reparation && <p className="error">{errors.date_reparation}</p>}
           </label>
           <label>
             Cout:
@@ -94,17 +74,15 @@ const Repairs1 = () => {
               onChange={e => setFormData({ ...formData, cout: e.target.value })}
               required
             />
-            {errors.cout && <p className="error">{errors.cout}</p>}
           </label>
           <label>
             Fournisseur:
             <input
               type="text"
-              value={formData.fournisseur}
-              onChange={e => setFormData({ ...formData, fournisseur: e.target.value })}
+              value={formData.fornisseur}
+              onChange={e => setFormData({ ...formData, fornisseur: e.target.value })}
               required
             />
-            {errors.fournisseur && <p className="error">{errors.fournisseur}</p>}
           </label>
           <label>
             Facture (optional):
@@ -122,12 +100,11 @@ const Repairs1 = () => {
               onChange={e => setFormData({ ...formData, id_article: e.target.value })}
               required
             />
-            {errors.id_article && <p className="error">{errors.id_article}</p>}
           </label>
           <button type="submit">Add Repair</button>
         </form>
         </div>
-        <div className="repair-list">
+        <div className="repa-list">
           <h2>Repair List</h2>
           <table>
             <thead>
@@ -143,12 +120,12 @@ const Repairs1 = () => {
             </thead>
             <tbody>
               {repairs.map(repair => (
-                <tr key={repair.id_reparation}>
-                  <td>{repair.id_reparation}</td>
+                <tr key={repair.id_reparation_art}>
+                  <td>{repair.id_reparation_art}</td>
                   <td>{repair.type}</td>
                   <td>{repair.date_reparation}</td>
                   <td>{repair.cout}</td>
-                  <td>{repair.fournisseur}</td>
+                  <td>{repair.fornisseur}</td>
                   <td>{repair.facture}</td>
                   <td>{repair.id_article}</td>
                 </tr>

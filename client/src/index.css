@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -41,12 +40,15 @@
 .members-list th, .members-list td {
   text-align: left;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .members-list th {
   background-color: #f2f2f2;
   color: #333;
+}
+.members-list td:hover {
+  background-color: #f9f9f9;
 }
 
 .members-list tr:hover {
@@ -76,7 +78,7 @@
 
   .members-list tr {
     margin-bottom: 10px;
-    border-bottom: 2px solid #f2f2f2;
+    border: 2px solid #f2f2f2;
   }
 
   .members-list td {
@@ -182,12 +184,15 @@
 .personnel-list th, .personnel-list td {
   text-align: left;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .personnel-list th {
   background-color: #f2f2f2;
   color: #333;
+}
+.personnel-list td:hover {
+  background-color: #f9f9f9;
 }
 
 .personnel-list tr:hover {
@@ -217,7 +222,7 @@
 
   .personnel-list tr {
     margin-bottom: 10px;
-    border-bottom: 2px solid #f2f2f2;
+    border: 2px solid #f2f2f2;
   }
 
   .personnel-list td {
@@ -326,12 +331,15 @@
 .vehicule-list th, .vehicule-list td {
   text-align: left;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .vehicule-list th {
   background-color: #f2f2f2;
   color: #333;
+}
+.vehicule-list td:hover {
+  background-color: #f9f9f9;
 }
 
 .vehicule-list tr:hover {
@@ -361,7 +369,7 @@
 
   .vehicule-list tr {
     margin-bottom: 10px;
-    border-bottom: 2px solid #f2f2f2;
+    border: 2px solid #f2f2f2;
   }
 
   .vehicule-list td {
@@ -469,12 +477,15 @@
 .Missions-list th, .Missions-list td {
   text-align: left;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .Missions-list th {
   background-color: #f2f2f2;
   color: #333;
+}
+.Missions-list td:hover {
+  background-color: #f9f9f9;
 }
 
 .Missions-list tr:hover {
@@ -504,7 +515,7 @@
 
   .Missions-list tr {
     margin-bottom: 10px;
-    border-bottom: 2px solid #f2f2f2;
+    border: 2px solid #f2f2f2;
   }
 
   .Missions-list td {
@@ -610,12 +621,15 @@
 .recharge-list th, .recharge-list td {
   text-align: left;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .recharge-list th {
   background-color: #f2f2f2;
   color: #333;
+}
+.recharge-list td:hover {
+  background-color: #f9f9f9;
 }
 
 .recharge-list tr:hover {
@@ -645,7 +659,7 @@
 
   .recharge-list tr {
     margin-bottom: 10px;
-    border-bottom: 2px solid #f2f2f2;
+    border: 2px solid #f2f2f2;
   }
 
   .recharge-list td {
@@ -752,12 +766,15 @@
 .report-list th, .report-list td {
   text-align: left;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .report-list th {
   background-color: #f2f2f2;
   color: #333;
+}
+.report-list td:hover {
+  background-color: #f9f9f9;
 }
 
 .report-list tr:hover {
@@ -787,7 +804,7 @@
 
   .report-list tr {
     margin-bottom: 10px;
-    border-bottom: 2px solid #f2f2f2;
+    border: 2px solid #f2f2f2;
   }
 
   .report-list td {
@@ -889,21 +906,24 @@
 .repair-list th, .repair-list td {
   text-align: left;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .repair-list th {
   background-color: #f2f2f2;
   color: #333;
 }
-
+.repair-list td:hover {
+  background-color: #f9f9f9;
+}
 .repair-list tr:hover {
-  background-color: #f5f5f5;
+  background-color: #f2f2f2;
 }
 
 .repair-list td {
   color: #555;
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -924,7 +944,7 @@
 
   .repair-list tr {
     margin-bottom: 10px;
-    border-bottom: 2px solid #f2f2f2;
+    border: 2px solid #f2f2f2;
   }
 
   .repair-list td {

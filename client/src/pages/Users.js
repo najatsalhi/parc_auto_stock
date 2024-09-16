@@ -6,7 +6,6 @@ import { FaSearch, FaEdit, FaTrashAlt } from 'react-icons/fa'; // Import icons
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({
-    id_utilisateur: '',
     nom: '',
     prenom: '',
     email: '',
@@ -30,20 +29,21 @@ const Users = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isEditing) {
-      axios.put(`http://localhost:3001/users/${formData.id_utilisateur}`, formData)
+      axios.put(`http://localhost:3001/users/${formData.id_user}`, formData)
         .then(() => {
           fetchUsers(); // Refresh user list after updating user
           resetForm();
         })
         .catch(error => console.error('Error updating user:', error));
-    } else {
+    }
+    
       axios.post('http://localhost:3001/users', formData)
         .then(() => {
           fetchUsers(); // Refresh user list after adding a new user
           resetForm();
         })
         .catch(error => console.error('Error adding user:', error));
-    }
+    
   };
 
   const handleEdit = (user) => {
@@ -59,7 +59,7 @@ const Users = () => {
 
   const resetForm = () => {
     setFormData({
-      id_utilisateur: '',
+
       nom: '',
       prenom: '',
       email: '',
@@ -89,60 +89,66 @@ const Users = () => {
         <h1>User Management</h1>
 
         <form className="user-form" onSubmit={handleSubmit}>
-          <label>
+          <div><div><label>
             Nom:
-            <input
+          </label></div>
+            <div><input
               type="text"
               value={formData.nom}
               onChange={e => setFormData({ ...formData, nom: e.target.value })}
               required
-            />
-          </label>
-          <label>
+            /></div>
+          </div>
+          <div><div><label>
             Prénom:
-            <input
+          </label></div>
+            <div><input
               type="text"
               value={formData.prenom}
               onChange={e => setFormData({ ...formData, prenom: e.target.value })}
               required
-            />
-          </label>
-          <label>
+            /></div>
+          </div>
+          <div><div><label>
             Email:
-            <input
+          </label></div>
+            <div><input
               type="email"
               value={formData.email}
               onChange={e => setFormData({ ...formData, email: e.target.value })}
               required
-            />
-          </label>
-          <label>
+            /></div>
+          </div>
+          <div><div><label>
             Password:
-            <input
+          </label></div>
+            <div><input
               type="password"
               value={formData.password}
               onChange={e => setFormData({ ...formData, password: e.target.value })}
               required
-            />
-          </label>
-          <label>
+            /></div>
+          </div>
+          <div><div><label>
             Role:
-            <input
+          </label></div>
+            <div><input
               type="text"
               value={formData.role}
               onChange={e => setFormData({ ...formData, role: e.target.value })}
               required
-            />
-          </label>
-          <label>
+            /></div>
+          </div>
+          <div><div><label>
             Telephone:
-            <input
+          </label></div>
+            <div><input
               type="text"
               value={formData.telephone}
               onChange={e => setFormData({ ...formData, telephone: e.target.value })}
               required
-            />
-          </label>
+            /></div>
+          </div>
           <button type="submit">{isEditing ? 'Update User' : 'Add User'}</button>
           {isEditing && <button onClick={resetForm}>Cancel</button>}
         </form>
@@ -172,7 +178,7 @@ const Users = () => {
                   <td>{user.telephone}</td>
                   <td>
                     <FaEdit onClick={() => handleEdit(user)} />
-                    <FaTrashAlt onClick={() => handleDelete(user.id_utilisateur)} />
+                    <FaTrashAlt onClick={() => handleDelete(user.id_user)} />
                   </td>
                 </tr>
               ))}
