@@ -31,6 +31,20 @@ app.post("/login", (req, res) => {
 });
 {/* Stock */}
 
+app.get('/dashboa', (req, res) => {
+  db.query("SELECT COUNT(*) as totalVehicule FROM vehicule ;  SELECT COUNT(*) as totalRepairs FROM reparation_veh ;  SELECT COUNT(*) as totalReports FROM rapport_veh;", (err, results) => {
+    if (err) return res.status(500).json({ error: err });
+    res.json(results);
+  });
+});
+
+  app.get('/dashboard', (req, res) => {
+    db.query("SELECT COUNT(*) as totalUsers FROM users; SELECT COUNT(*) as totalArticles FROM article; SELECT COUNT(*) as totalRepairs FROM repparation_art;", (err, results) => {
+      if (err) return res.status(500).json({ error: err });
+      res.json(results);
+    });
+  });
+
 /// Routes pour les utilisateurs
 app.post('/users', (req, res) => {
   const { nom, prenom, email, password, role, telephone } = req.body;

@@ -14,7 +14,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/dashboard');
+        const response = await axios.get('http://localhost:3001/dashboard');
         setData(response.data);
       } catch (err) {
         console.error('Erreur lors de la récupération des données du tableau de bord', err);
