@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../index.css";
 import axios from "axios";
+import { FaSearch, FaEdit, FaTrashAlt } from "react-icons/fa"; // Import icons
 
 const Reports = () => {
   const [reports, setReports] = useState([]);
@@ -11,6 +12,12 @@ const Reports = () => {
     format: "",
     id_vehicule: "",
   });
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredUsers = reports.filter((user) =>
+    `${user.id_vehicule} `
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
 
   const handleChange = (event) => {
     setValues((prev) => ({
@@ -138,26 +145,40 @@ const Reports = () => {
       {/* Report List Section */}
       <div className="report-list">
         <h3>Liste des Rapports</h3>
+        <div>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search vehicule ID..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{ background: "none" }}
+          />
+          <span className="search-icon"><FaSearch /></span>
+        </div>
+      </div>
         <table>
           <thead>
             <tr>
               <th>Report ID</th>
+              <th>Vehicule ID</th>
               <th>Type</th>
               <th>Generation Date</th>
               <th>Contenu</th>
               <th>Format</th>
-              <th>Vehicule ID</th>
+              
             </tr>
           </thead>
           <tbody>
-            {reports.map((report) => (
+            {filteredUsers.map((report) => (
                 <tr key={report.id_rapport_veh}>
                   <td>{report.id_rapport_veh}</td>
+                  <td>{report.id_vehicule}</td>
                   <td>{report.type}</td>
                   <td>{report.date_gener}</td>
                   <td>{report.contenu}</td>
                   <td>{report.format}</td>
-                  <td>{report.id_vehicule}</td>
+                  
                 </tr>
               ))
             }

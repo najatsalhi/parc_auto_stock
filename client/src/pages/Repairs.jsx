@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../index.css";
+import { FaSearch, FaEdit, FaTrashAlt } from "react-icons/fa"; // Import icons
+
 
 const Repairs = () => {
   const [repairs, setRepairs] = useState([]);
@@ -13,6 +15,12 @@ const Repairs = () => {
     facture: "",
     id_vehicule: "",
   });
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredUsers = repairs.filter((user) =>
+    `${user.id_vehicule} `
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
 
   const handleChange = (event) => {
     setValues((prev) => ({
@@ -54,6 +62,20 @@ const Repairs = () => {
       <div className="add-repair">
         <h3>Ajouter une réparation</h3>
         <form action="" onSubmit={addRepair}>
+        <div>
+            <div className="wrapper">
+              <div>
+                <label htmlFor="id_vehicule">ID Vehicule:</label>
+              </div>
+              <div>
+                <input className="inputt"
+                  type="number"
+                  onChange={handleChange}
+                  name="id_vehicule"
+                />
+              </div>
+            </div>
+          </div>
           <div>
             <div className="wrapper">
               <div>
@@ -125,20 +147,7 @@ const Repairs = () => {
               </div>
             </div>
           </div>
-          <div>
-            <div className="wrapper">
-              <div>
-                <label htmlFor="id_vehicule">ID Vehicule:</label>
-              </div>
-              <div>
-                <input className="inputt"
-                  type="number"
-                  onChange={handleChange}
-                  name="id_vehicule"
-                />
-              </div>
-            </div>
-          </div>
+          
             <button id="butn3" type="submit">
               <span className="bet">Ajouter</span>
             </button>
@@ -147,6 +156,18 @@ const Repairs = () => {
       {/* Repair List Section */}
       <div className="repair-list">
         <h3>Liste des réparations</h3>
+        <div>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search vehicule ID...."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{ background: "none" }}
+          />
+          <span className="search-icon"><FaSearch /></span>
+        </div>
+      </div>
         <table>
           <thead>
             <tr>
@@ -160,7 +181,7 @@ const Repairs = () => {
             </tr>
           </thead>
           <tbody>
-            {repairs.map((repair) => (
+            {filteredUsers.map((repair) => (
               <tr key={repair.id_reparation_veh}>
                 <td>{repair.id_reparation_veh}</td>
                 <td>{repair.type}</td>

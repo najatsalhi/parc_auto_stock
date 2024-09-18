@@ -399,7 +399,6 @@ const Vehicule = () => {
                 <td>{vehicule.visite_technique}</td>
                 <td>{vehicule.visite_technique_date}</td>
 
-
               </tr>
             ))}
           </tbody>
