@@ -13,11 +13,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 {/* Connection to database */}
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "malak",
-  database: "parc_auto_stock",
+
+
+const mysql2 = require('mysql2'); // Déclarer mysql2 une seule fois
+
+const db = mysql2.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'parc_auto_stock'
+});
+
+
+
+db.connect((err) => {
+  if (err) {
+    console.error("Erreur de connexion à la base de données : ", err);
+    return;
+  }
+  console.log("Connecté à la base de données MySQL !");
 });
 
 {/* Login */}

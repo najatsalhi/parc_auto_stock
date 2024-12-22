@@ -32,7 +32,7 @@ function ForgotPassword() {
                 type="email"
                 name="email"
                 id="email"
-                autocomplete="off"
+                autoComplete="off"
                 className="name-input1"
                 placeholder=""
                 onChange={(e) => setEmail(e.target.value)}

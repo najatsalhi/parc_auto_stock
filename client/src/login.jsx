@@ -53,7 +53,7 @@ function Login() {
                     type="email"
                     name="email"
                     id="email"
-                    autocomplete="off"
+                    autoComplete="off"
                     className="name-input1"
                     placeholder=""
                     onChange={handleInput}
@@ -82,7 +82,7 @@ function Login() {
                     type="password"
                     name="password"
                     id="password"
-                    autocomplete="off"
+                    autoComplete="off"
                     className="name-input2"
                     placeholder=""
                     onChange={handleInput}

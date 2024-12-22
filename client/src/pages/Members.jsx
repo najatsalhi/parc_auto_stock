@@ -129,23 +129,7 @@ required/>
             </div>
             
           </div>
-          <div>
-            <div className="wrapper">
-              <div>
-                <label htmlFor="confirmer">Comfirmer:</label>
-              </div>
-              <div>
-                <input
-                  className="inputt"
-                  type="password"
-                  onChange={handleChange}
-                  name="confirmer"
-                  required
-                />
-              </div>
-            </div>
-            
-          </div>
+          
           <div>
             <div className="wrapper">
               <div>

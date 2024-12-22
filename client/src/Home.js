@@ -113,8 +113,8 @@ const Home1 = () => {
         </div>
       </div>
       <div className="apropos">
-        <section class="about-section">
-          <div class="container">
+        <section className="about-section">
+          <div className="container">
             <h2 id="section2">Qui sommes-nous ?</h2>
             <p>
               Nous sommes des stagiaires au sein de la WILAYA dédiée à fournir
